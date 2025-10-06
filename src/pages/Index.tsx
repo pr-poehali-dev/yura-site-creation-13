@@ -31,13 +31,12 @@ export default function Index() {
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold">ONE BARBERSHOP</span>
+            <span className="text-2xl font-bold">ONE</span>
             <img 
               src="https://cdn.poehali.dev/files/7e9a3024-ca8a-4d76-af5f-23dbb82b0379.jpeg" 
               alt="Barber pole" 
               className="h-8 w-auto object-contain"
             />
-            <span className="text-2xl font-bold">BARBERSHOP</span>
           </div>
           <div className="hidden md:flex gap-8">
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
