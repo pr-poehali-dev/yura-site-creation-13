@@ -68,7 +68,11 @@ export default function Index() {
           <Button 
             size="lg" 
             className="text-xl px-12 py-8 bg-primary hover:bg-primary/90 text-black font-bold tracking-wide"
-            onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+            onClick={() => {
+              if (typeof (window as any).yclientsWidget !== 'undefined') {
+                (window as any).yclientsWidget.open();
+              }
+            }}
           >
             ЗАПИСАТЬСЯ
           </Button>
@@ -110,7 +114,11 @@ export default function Index() {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6"
-              onClick={() => document.getElementById('contacts')?.scrollIntoView({ behavior: 'smooth' })}
+              onClick={() => {
+                if (typeof (window as any).yclientsWidget !== 'undefined') {
+                  (window as any).yclientsWidget.open();
+                }
+              }}
             >
               ЗАПИСАТЬСЯ НА СТРИЖКУ
             </Button>
@@ -237,7 +245,15 @@ export default function Index() {
                       className="bg-black border-primary/30 text-white text-lg py-6"
                     />
                   </div>
-                  <Button className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg py-6">
+                  <Button 
+                    type="button"
+                    className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg py-6"
+                    onClick={() => {
+                      if (typeof (window as any).yclientsWidget !== 'undefined') {
+                        (window as any).yclientsWidget.open();
+                      }
+                    }}
+                  >
                     ОТПРАВИТЬ ЗАЯВКУ
                   </Button>
                   <p className="text-sm text-gray-400 text-center">
