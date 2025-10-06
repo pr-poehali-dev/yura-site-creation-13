@@ -33,7 +33,7 @@ export default function Index() {
           <div className="flex items-center gap-1">
             <span className="text-2xl font-bold">ONE</span>
             <img 
-              src="https://cdn.poehali.dev/files/f2575e38-dc30-4a0b-8ffc-daa831b93d49.jpg" 
+              src="https://static.vecteezy.com/system/resources/previews/024/092/943/non_2x/barber-pole-icon-free-png.png" 
               alt="Barber pole" 
               className="h-8 w-auto object-contain"
             />
