@@ -178,7 +178,7 @@ export default function Index() {
                     <Icon name="Award" size={24} className="text-primary" />
                   </div>
                   <div>
-                    <div className="font-bold text-xl">5+ лет</div>
+                    <div className="font-bold text-xl">8+ лет</div>
                     <div className="text-gray-400">опыта работы</div>
                   </div>
                 </div>
