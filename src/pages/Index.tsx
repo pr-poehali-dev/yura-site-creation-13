@@ -191,15 +191,7 @@ export default function Index() {
                     <div className="text-gray-400">довольных клиентов</div>
                   </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center">
-                    <Icon name="Star" size={24} className="text-primary" />
-                  </div>
-                  <div>
-                    <div className="font-bold text-xl">Топ-3</div>
-                    <div className="text-gray-400">барбершопов города</div>
-                  </div>
-                </div>
+
               </div>
             </div>
             <div className="relative">
