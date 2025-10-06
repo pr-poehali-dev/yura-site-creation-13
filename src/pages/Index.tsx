@@ -31,7 +31,7 @@ export default function Index() {
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold">ONE</span>
+            <span className="text-2xl font-bold">ONE BARBERSHOP</span>
             <img 
               src="https://cdn.poehali.dev/files/7e9a3024-ca8a-4d76-af5f-23dbb82b0379.jpeg" 
               alt="Barber pole" 
@@ -63,7 +63,7 @@ export default function Index() {
         <div className="relative z-20 text-center px-4 max-w-4xl animate-fade-in">
           <h1 className="text-7xl md:text-9xl font-bold mb-6 tracking-wider">
             <span className="block text-white">ONE</span>
-            <span className="block bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-transparent">
+            <span className="block bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-gray-600">
               BARBERSHOP
             </span>
           </h1>
