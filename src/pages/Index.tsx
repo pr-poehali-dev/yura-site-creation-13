@@ -31,7 +31,6 @@ export default function Index() {
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-2">
-            <Icon name="Scissors" size={28} className="text-primary" />
             <span className="text-2xl font-bold">ONEBARBERSHOP</span>
           </div>
           <div className="hidden md:flex gap-8">
