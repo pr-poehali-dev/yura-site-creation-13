@@ -31,13 +31,7 @@ export default function Index() {
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 py-4 flex justify-between items-center">
           <div className="flex items-center gap-1">
-            <span className="text-2xl font-bold">ONE</span>
-            <img 
-              src="https://static.vecteezy.com/system/resources/previews/024/092/943/non_2x/barber-pole-icon-free-png.png" 
-              alt="Barber pole" 
-              className="h-8 w-auto object-contain"
-            />
-            <span className="text-2xl font-bold">BARBERSHOP</span>
+            <span className="text-2xl font-bold">ONEBARBERSHOP</span>
           </div>
           <div className="hidden md:flex gap-8">
             <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
