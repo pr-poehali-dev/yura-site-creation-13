@@ -39,7 +39,7 @@ export default function Index() {
             <a href="#portfolio" className="hover:text-primary transition-colors">Работы</a>
             <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
           </div>
-          <a href="tel:+79841563771" className="text-primary font-medium">
+          <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2">
             +7 (984) 156-37-71
           </a>
         </div>
