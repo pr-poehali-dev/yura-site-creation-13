@@ -66,6 +66,7 @@ export default function Index() {
               alt="Barber pole" 
               className="h-8 w-auto object-contain"
             />
+            <span className="text-2xl font-bold">Barbershop</span>
           </div>
           <div className="hidden md:flex gap-8">
             <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">Услуги</button>
