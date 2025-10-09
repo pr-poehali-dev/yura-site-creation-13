@@ -143,11 +143,7 @@ export default function Index() {
             <Button 
               size="lg"
               className="bg-primary hover:bg-primary/90 text-black font-bold text-lg px-10 py-6"
-              onClick={() => {
-                if (typeof (window as any).yclientsWidget !== 'undefined') {
-                  (window as any).yclientsWidget.open();
-                }
-              }}
+              onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
             >
               ЗАПИСАТЬСЯ НА СТРИЖКУ
             </Button>
@@ -269,11 +265,7 @@ export default function Index() {
                   <Button 
                     type="button"
                     className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-lg py-6"
-                    onClick={() => {
-                      if (typeof (window as any).yclientsWidget !== 'undefined') {
-                        (window as any).yclientsWidget.open();
-                      }
-                    }}
+                    onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
                   >
                     ОТПРАВИТЬ ЗАЯВКУ
                   </Button>
@@ -413,9 +405,7 @@ export default function Index() {
                 className="bg-primary hover:bg-primary/90 text-black font-bold text-xl px-12 py-6"
                 onClick={() => {
                   setShowServicesModal(false);
-                  if (typeof (window as any).yclientsWidget !== 'undefined') {
-                    (window as any).yclientsWidget.open();
-                  }
+                  window.open('https://n1056280.yclients.com/', '_blank');
                 }}
               >
                 ЗАПИСАТЬСЯ СЕЙЧАС
