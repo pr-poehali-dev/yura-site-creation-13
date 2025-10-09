@@ -101,11 +101,7 @@ export default function Index() {
           <Button 
             size="lg" 
             className="text-xl px-12 py-8 bg-primary hover:bg-primary/90 text-black font-bold tracking-wide"
-            onClick={() => {
-              if (typeof (window as any).yclientsWidget !== 'undefined') {
-                (window as any).yclientsWidget.open();
-              }
-            }}
+            onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
           >
             ЗАПИСАТЬСЯ
           </Button>
