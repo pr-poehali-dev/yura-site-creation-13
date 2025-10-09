@@ -50,12 +50,11 @@ export default function Index() {
       </nav>
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
+        <div className="absolute inset-0 bg-black/40 z-10" />
         <div 
-          className="absolute inset-0 bg-cover bg-center scale-110"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop')`,
-            filter: 'brightness(0.7)'
+            backgroundImage: `url('https://cdn.poehali.dev/files/40391841-6926-4c4e-b7cf-11074cd3a133.jpg')`
           }}
         />
         
