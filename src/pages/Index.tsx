@@ -91,7 +91,7 @@ export default function Index() {
         <div className="relative z-20 text-center px-4 max-w-4xl animate-fade-in">
           <h1 className="text-7xl md:text-9xl font-bold mb-6 tracking-wider">
             <span className="block text-white">ONE</span>
-            <span className="block bg-gradient-to-r from-primary via-yellow-300 to-primary bg-clip-text text-gray-600">
+            <span className="block text-primary">
               BARBERSHOP
             </span>
           </h1>
