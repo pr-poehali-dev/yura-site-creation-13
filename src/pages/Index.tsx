@@ -25,6 +25,14 @@ const portfolio = [
 
 export default function Index() {
   const [form, setForm] = useState({ name: '', phone: '' });
+  const [showServicesModal, setShowServicesModal] = useState(false);
+  const [currentServiceImage, setCurrentServiceImage] = useState(0);
+
+  const serviceImages = [
+    'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
+    'https://cdn.poehali.dev/files/ca1667af-1edb-4ee1-86c9-40ba375f40dd.jpg',
+    'https://cdn.poehali.dev/files/75dfb668-4be5-48be-9fd4-da639ed5ad0d.jpg'
+  ];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -39,7 +47,7 @@ export default function Index() {
             />
           </div>
           <div className="hidden md:flex gap-8">
-            <a href="#services" className="hover:text-primary transition-colors">Услуги</a>
+            <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">Услуги</button>
             <a href="#portfolio" className="hover:text-primary transition-colors">Работы</a>
             <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
           </div>
@@ -321,6 +329,74 @@ export default function Index() {
           </p>
         </div>
       </footer>
+
+      {showServicesModal && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
+          onClick={() => setShowServicesModal(false)}
+        >
+          <div className="relative max-w-6xl w-full" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setShowServicesModal(false)}
+              className="absolute -top-12 right-0 text-white hover:text-primary transition-colors"
+            >
+              <Icon name="X" size={40} />
+            </button>
+
+            <div className="relative">
+              <img
+                src={serviceImages[currentServiceImage]}
+                alt="Прайс-лист услуг"
+                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+              />
+
+              {serviceImages.length > 1 && (
+                <>
+                  <button
+                    onClick={() => setCurrentServiceImage((prev) => (prev === 0 ? serviceImages.length - 1 : prev - 1))}
+                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-3 rounded-full transition-all"
+                  >
+                    <Icon name="ChevronLeft" size={32} />
+                  </button>
+                  <button
+                    onClick={() => setCurrentServiceImage((prev) => (prev === serviceImages.length - 1 ? 0 : prev + 1))}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-3 rounded-full transition-all"
+                  >
+                    <Icon name="ChevronRight" size={32} />
+                  </button>
+
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
+                    {serviceImages.map((_, index) => (
+                      <button
+                        key={index}
+                        onClick={() => setCurrentServiceImage(index)}
+                        className={`w-3 h-3 rounded-full transition-all ${
+                          index === currentServiceImage ? 'bg-primary w-8' : 'bg-white/50 hover:bg-white'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                </>
+              )}
+            </div>
+
+            <div className="mt-6 text-center">
+              <Button
+                size="lg"
+                className="bg-primary hover:bg-primary/90 text-black font-bold text-xl px-12 py-6"
+                onClick={() => {
+                  setShowServicesModal(false);
+                  if (typeof (window as any).yclientsWidget !== 'undefined') {
+                    (window as any).yclientsWidget.open();
+                  }
+                }}
+              >
+                ЗАПИСАТЬСЯ СЕЙЧАС
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
