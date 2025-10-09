@@ -27,12 +27,33 @@ export default function Index() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [showServicesModal, setShowServicesModal] = useState(false);
   const [currentServiceImage, setCurrentServiceImage] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
     'https://cdn.poehali.dev/files/ca1667af-1edb-4ee1-86c9-40ba375f40dd.jpg',
     'https://cdn.poehali.dev/files/75dfb668-4be5-48be-9fd4-da639ed5ad0d.jpg'
   ];
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 75) {
+      // Swipe left
+      setCurrentServiceImage((prev) => (prev === serviceImages.length - 1 ? 0 : prev + 1));
+    }
+    if (touchStart - touchEnd < -75) {
+      // Swipe right
+      setCurrentServiceImage((prev) => (prev === 0 ? serviceImages.length - 1 : prev - 1));
+    }
+  };
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -343,26 +364,32 @@ export default function Index() {
               <Icon name="X" size={40} />
             </button>
 
-            <div className="relative">
+            <div 
+              className="relative touch-pan-y"
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
               <img
                 src={serviceImages[currentServiceImage]}
                 alt="Прайс-лист услуг"
-                className="w-full h-auto max-h-[85vh] object-contain rounded-lg"
+                className="w-full h-auto max-h-[85vh] object-contain rounded-lg select-none"
+                draggable={false}
               />
 
               {serviceImages.length > 1 && (
                 <>
                   <button
                     onClick={() => setCurrentServiceImage((prev) => (prev === 0 ? serviceImages.length - 1 : prev - 1))}
-                    className="absolute left-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-3 rounded-full transition-all"
+                    className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-2 md:p-3 rounded-full transition-all"
                   >
-                    <Icon name="ChevronLeft" size={32} />
+                    <Icon name="ChevronLeft" size={24} className="md:w-8 md:h-8" />
                   </button>
                   <button
                     onClick={() => setCurrentServiceImage((prev) => (prev === serviceImages.length - 1 ? 0 : prev + 1))}
-                    className="absolute right-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-3 rounded-full transition-all"
+                    className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 bg-black/70 hover:bg-primary/90 text-white hover:text-black p-2 md:p-3 rounded-full transition-all"
                   >
-                    <Icon name="ChevronRight" size={32} />
+                    <Icon name="ChevronRight" size={24} className="md:w-8 md:h-8" />
                   </button>
 
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2">
@@ -370,11 +397,15 @@ export default function Index() {
                       <button
                         key={index}
                         onClick={() => setCurrentServiceImage(index)}
-                        className={`w-3 h-3 rounded-full transition-all ${
-                          index === currentServiceImage ? 'bg-primary w-8' : 'bg-white/50 hover:bg-white'
+                        className={`w-2 h-2 md:w-3 md:h-3 rounded-full transition-all ${
+                          index === currentServiceImage ? 'bg-primary w-6 md:w-8' : 'bg-white/50 hover:bg-white'
                         }`}
                       />
                     ))}
+                  </div>
+
+                  <div className="md:hidden absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-2 rounded-full text-white text-sm">
+                    Свайп для пролистывания
                   </div>
                 </>
               )}
