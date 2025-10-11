@@ -70,7 +70,7 @@ export default function Index() {
           <div className="hidden md:flex gap-8">
             <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">Услуги</button>
             <a href="#portfolio" className="hover:text-primary transition-colors">Работы</a>
-            <a href="#reviews" className="hover:text-primary transition-colors">Отзывы</a>
+            <a href="https://2gis.ru/vladivostok/firm/70000001080725498/tab/reviews" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Отзывы</a>
             <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
           </div>
           <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
