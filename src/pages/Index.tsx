@@ -85,7 +85,7 @@ export default function Index() {
         <div 
           className="absolute inset-0 bg-cover bg-center scale-110"
           style={{ 
-            backgroundImage: `url('https://images.unsplash.com/photo-1585747860715-2ba37e788b70?w=1920&h=1080&fit=crop')`,
+            backgroundImage: `url('https://cdn.poehali.dev/files/767ba021-15d3-49ec-81dd-956219f5f777.jpg')`,
             filter: 'brightness(0.7)'
           }}
         />
