@@ -27,6 +27,7 @@ export default function Index() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [showServicesModal, setShowServicesModal] = useState(false);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const [currentServiceImage, setCurrentServiceImage] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -86,9 +87,54 @@ export default function Index() {
               <span className="hidden sm:inline">+7 (984) 156-37-71</span>
               <Icon name="Phone" size={20} className="sm:hidden" />
             </a>
+            <button
+              onClick={() => setShowMobileMenu(!showMobileMenu)}
+              className="md:hidden text-white hover:text-primary transition-colors"
+            >
+              <Icon name={showMobileMenu ? "X" : "Menu"} size={24} />
+            </button>
           </div>
         </div>
       </nav>
+
+      {showMobileMenu && (
+        <div className="fixed top-[60px] left-0 right-0 bg-black/95 backdrop-blur-md z-40 border-b border-primary/20 md:hidden">
+          <div className="flex flex-col p-4 gap-4">
+            <button 
+              onClick={() => {
+                setShowServicesModal(true);
+                setShowMobileMenu(false);
+              }} 
+              className="text-left hover:text-primary transition-colors py-2"
+            >
+              {language === 'ru' ? 'Услуги' : 'Services'}
+            </button>
+            <a 
+              href="#portfolio" 
+              className="hover:text-primary transition-colors py-2"
+              onClick={() => setShowMobileMenu(false)}
+            >
+              {language === 'ru' ? 'Работы' : 'Portfolio'}
+            </a>
+            <button 
+              onClick={() => {
+                setShowReviewsModal(true);
+                setShowMobileMenu(false);
+              }} 
+              className="text-left hover:text-primary transition-colors py-2"
+            >
+              {language === 'ru' ? 'Отзывы' : 'Reviews'}
+            </button>
+            <a 
+              href="#contacts" 
+              className="hover:text-primary transition-colors py-2"
+              onClick={() => setShowMobileMenu(false)}
+            >
+              {language === 'ru' ? 'Контакты' : 'Contacts'}
+            </a>
+          </div>
+        </div>
+      )}
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
