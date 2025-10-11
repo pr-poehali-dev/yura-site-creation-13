@@ -6,12 +6,12 @@ import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
 
 const services = [
-  { title: 'Мужская стрижка', price: '2000', icon: 'Scissors' },
-  { title: 'Бритье опасной бритвой', price: '1200', icon: 'Razor' },
-  { title: 'Моделирование бороды', price: '800', icon: 'Sparkles' },
-  { title: 'Детская стрижка', price: '1000', icon: 'Baby' },
-  { title: 'Стрижка + борода', price: '2500', icon: 'Scissors' },
-  { title: 'Камуфляж седины', price: '1500', icon: 'Droplet' }
+  { title: 'Мужская стрижка', titleEn: 'Men\'s Haircut', price: '2000', icon: 'Scissors' },
+  { title: 'Бритье опасной бритвой', titleEn: 'Straight Razor Shave', price: '1200', icon: 'Razor' },
+  { title: 'Моделирование бороды', titleEn: 'Beard Styling', price: '800', icon: 'Sparkles' },
+  { title: 'Детская стрижка', titleEn: 'Kids Haircut', price: '1000', icon: 'Baby' },
+  { title: 'Стрижка + борода', titleEn: 'Haircut + Beard', price: '2500', icon: 'Scissors' },
+  { title: 'Камуфляж седины', titleEn: 'Gray Hair Camouflage', price: '1500', icon: 'Droplet' }
 ];
 
 const portfolio = [
@@ -29,6 +29,7 @@ export default function Index() {
   const [currentServiceImage, setCurrentServiceImage] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
+  const [language, setLanguage] = useState<'ru' | 'en'>('ru');
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
@@ -68,15 +69,23 @@ export default function Index() {
             <span className="text-lg md:text-2xl font-bold">Barbershop</span>
           </div>
           <div className="hidden md:flex gap-8">
-            <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">Услуги</button>
-            <a href="#portfolio" className="hover:text-primary transition-colors">Работы</a>
-            <a href="https://2gis.ru/vladivostok/firm/70000001080725498/tab/reviews" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">Отзывы</a>
-            <a href="#contacts" className="hover:text-primary transition-colors">Контакты</a>
+            <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">{language === 'ru' ? 'Услуги' : 'Services'}</button>
+            <a href="#portfolio" className="hover:text-primary transition-colors">{language === 'ru' ? 'Работы' : 'Portfolio'}</a>
+            <a href="https://2gis.ru/vladivostok/firm/70000001080725498/tab/reviews" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</a>
+            <a href="#contacts" className="hover:text-primary transition-colors">{language === 'ru' ? 'Контакты' : 'Contacts'}</a>
           </div>
-          <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
-            <span className="hidden sm:inline">+7 (984) 156-37-71</span>
-            <Icon name="Phone" size={20} className="sm:hidden" />
-          </a>
+          <div className="flex items-center gap-3">
+            <button
+              onClick={() => setLanguage(language === 'ru' ? 'en' : 'ru')}
+              className="text-white hover:text-primary transition-colors font-medium text-sm md:text-base"
+            >
+              {language === 'ru' ? 'EN' : 'RU'}
+            </button>
+            <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
+              <span className="hidden sm:inline">+7 (984) 156-37-71</span>
+              <Icon name="Phone" size={20} className="sm:hidden" />
+            </a>
+          </div>
         </div>
       </nav>
 
@@ -98,14 +107,14 @@ export default function Index() {
             </span>
           </h1>
           <p className="text-lg sm:text-2xl md:text-3xl text-gray-300 mb-8 md:mb-12 font-light px-4">
-            Мужской стиль в центре Владивостока
+            {language === 'ru' ? 'Мужской стиль в центре Владивостока' : 'Men\'s Style in the Heart of Vladivostok'}
           </p>
           <Button 
             size="lg" 
             className="text-base sm:text-xl px-8 sm:px-12 py-6 sm:py-8 bg-primary hover:bg-primary/90 text-black font-bold tracking-wide"
             onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
           >
-            ЗАПИСАТЬСЯ
+            {language === 'ru' ? 'ЗАПИСАТЬСЯ' : 'BOOK NOW'}
           </Button>
         </div>
       </section>
@@ -113,9 +122,9 @@ export default function Index() {
       <section id="services" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
-            <span className="text-primary">УСЛУГИ</span> И ЦЕНЫ
+            <span className="text-primary">{language === 'ru' ? 'УСЛУГИ' : 'SERVICES'}</span> {language === 'ru' ? 'И ЦЕНЫ' : 'AND PRICES'}
           </h2>
-          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">Профессиональный уход для мужчин</p>
+          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Профессиональный уход для мужчин' : 'Professional Care for Men'}</p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
             {services.map((service, index) => (
@@ -133,7 +142,7 @@ export default function Index() {
                     </div>
                   </div>
                   <h3 className="text-base md:text-xl font-semibold text-white group-hover:text-primary transition-colors">
-                    {service.title}
+                    {language === 'ru' ? service.title : service.titleEn}
                   </h3>
                 </div>
                 <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
@@ -147,7 +156,7 @@ export default function Index() {
               className="bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6"
               onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
             >
-              ЗАПИСАТЬСЯ НА СТРИЖКУ
+              {language === 'ru' ? 'ЗАПИСАТЬСЯ НА СТРИЖКУ' : 'BOOK A HAIRCUT'}
             </Button>
           </div>
         </div>
@@ -156,9 +165,9 @@ export default function Index() {
       <section id="portfolio" className="py-16 md:py-24 px-4 bg-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
-            НАШИ <span className="text-primary">РАБОТЫ</span>
+            {language === 'ru' ? 'НАШИ' : 'OUR'} <span className="text-primary">{language === 'ru' ? 'РАБОТЫ' : 'WORK'}</span>
           </h2>
-          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">Примеры стрижек от наших мастеров</p>
+          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Примеры стрижек от наших мастеров' : 'Haircuts from Our Masters'}</p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
             {portfolio.map((img, index) => (
@@ -185,15 +194,13 @@ export default function Index() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6">
-                О <span className="text-primary">БАРБЕРШОПЕ</span>
+                {language === 'ru' ? 'О' : 'ABOUT'} <span className="text-primary">{language === 'ru' ? 'БАРБЕРШОПЕ' : 'BARBERSHOP'}</span>
               </h2>
               <p className="text-base md:text-xl text-gray-300 mb-4 md:mb-6 leading-relaxed">
-                ONEBarbershop — премиальный барбершоп в самом центре Владивостока. 
-                Мы создаем стильные мужские образы уже более 5 лет.
+                {language === 'ru' ? 'ONEBarbershop — премиальный барбершоп в самом центре Владивостока. Мы создаем стильные мужские образы уже более 5 лет.' : 'ONEBarbershop is a premium barbershop in the heart of Vladivostok. We have been creating stylish men\'s looks for over 5 years.'}
               </p>
               <p className="text-sm md:text-lg text-gray-400 mb-6 md:mb-8 leading-relaxed">
-                Наши мастера регулярно повышают квалификацию и следят за мировыми трендами. 
-                Используем только профессиональную косметику и инструменты премиум-класса.
+                {language === 'ru' ? 'Наши мастера регулярно повышают квалификацию и следят за мировыми трендами. Используем только профессиональную косметику и инструменты премиум-класса.' : 'Our masters regularly improve their skills and follow global trends. We use only professional cosmetics and premium-class tools.'}
               </p>
               <div className="space-y-3 md:space-y-4">
                 <div className="flex items-center gap-3 md:gap-4">
@@ -201,8 +208,8 @@ export default function Index() {
                     <Icon name="Award" size={20} className="text-primary md:w-6 md:h-6" />
                   </div>
                   <div>
-                    <div className="font-bold text-lg md:text-xl">8+ лет</div>
-                    <div className="text-gray-400 text-sm md:text-base">опыта работы</div>
+                    <div className="font-bold text-lg md:text-xl">{language === 'ru' ? '8+ лет' : '8+ years'}</div>
+                    <div className="text-gray-400 text-sm md:text-base">{language === 'ru' ? 'опыта работы' : 'of experience'}</div>
                   </div>
                 </div>
                 <div className="flex items-center gap-3 md:gap-4">
@@ -211,7 +218,7 @@ export default function Index() {
                   </div>
                   <div>
                     <div className="font-bold text-lg md:text-xl">5000+</div>
-                    <div className="text-gray-400 text-sm md:text-base">довольных клиентов</div>
+                    <div className="text-gray-400 text-sm md:text-base">{language === 'ru' ? 'довольных клиентов' : 'satisfied clients'}</div>
                   </div>
                 </div>
 
@@ -234,27 +241,27 @@ export default function Index() {
       <section id="contacts" className="py-16 md:py-24 px-4 bg-black">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
-            <span className="text-primary">КОНТАКТЫ</span>
+            <span className="text-primary">{language === 'ru' ? 'КОНТАКТЫ' : 'CONTACTS'}</span>
           </h2>
-          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">Запишитесь на удобное время</p>
+          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Запишитесь на удобное время' : 'Book a Convenient Time'}</p>
           
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
             <Card className="bg-zinc-900/50 border-primary/20">
               <CardContent className="p-6 md:p-8">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-primary">ОНЛАЙН ЗАПИСЬ</h3>
+                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-primary">{language === 'ru' ? 'ОНЛАЙН ЗАПИСЬ' : 'ONLINE BOOKING'}</h3>
                 <form className="space-y-4 md:space-y-6">
                   <div>
-                    <Label htmlFor="name" className="text-white text-base md:text-lg mb-2 block">Ваше имя</Label>
+                    <Label htmlFor="name" className="text-white text-base md:text-lg mb-2 block">{language === 'ru' ? 'Ваше имя' : 'Your Name'}</Label>
                     <Input 
                       id="name"
-                      placeholder="Введите имя"
+                      placeholder={language === 'ru' ? 'Введите имя' : 'Enter name'}
                       value={form.name}
                       onChange={(e) => setForm({ ...form, name: e.target.value })}
                       className="bg-black border-primary/30 text-white text-base md:text-lg py-5 md:py-6"
                     />
                   </div>
                   <div>
-                    <Label htmlFor="phone" className="text-white text-base md:text-lg mb-2 block">Телефон</Label>
+                    <Label htmlFor="phone" className="text-white text-base md:text-lg mb-2 block">{language === 'ru' ? 'Телефон' : 'Phone'}</Label>
                     <Input 
                       id="phone"
                       type="tel"
@@ -269,10 +276,10 @@ export default function Index() {
                     className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg py-5 md:py-6"
                     onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
                   >
-                    ОТПРАВИТЬ ЗАЯВКУ
+                    {language === 'ru' ? 'ОТПРАВИТЬ ЗАЯВКУ' : 'SUBMIT REQUEST'}
                   </Button>
                   <p className="text-xs md:text-sm text-gray-400 text-center">
-                    Мы перезвоним вам в течение 15 минут
+                    {language === 'ru' ? 'Мы перезвоним вам в течение 15 минут' : 'We will call you back within 15 minutes'}
                   </p>
                 </form>
               </CardContent>
@@ -284,22 +291,22 @@ export default function Index() {
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <Icon name="MapPin" size={24} className="text-primary flex-shrink-0 md:w-8 md:h-8" />
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">АДРЕС</h3>
-                      <p className="text-gray-300 text-sm md:text-lg">ул. Адм.Фокина 9а, Владивосток</p>
+                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">{language === 'ru' ? 'АДРЕС' : 'ADDRESS'}</h3>
+                      <p className="text-gray-300 text-sm md:text-lg">{language === 'ru' ? 'ул. Адм.Фокина 9а, Владивосток' : '9a Admiral Fokina St, Vladivostok'}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <Icon name="Clock" size={24} className="text-primary flex-shrink-0 md:w-8 md:h-8" />
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">РЕЖИМ РАБОТЫ</h3>
-                      <p className="text-gray-300 text-sm md:text-lg">Пн-Вс: 10:00 - 22:00</p>
-                      <p className="text-gray-400 text-sm md:text-base">Без выходных</p>
+                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">{language === 'ru' ? 'РЕЖИМ РАБОТЫ' : 'WORKING HOURS'}</h3>
+                      <p className="text-gray-300 text-sm md:text-lg">{language === 'ru' ? 'Пн-Вс: 10:00 - 22:00' : 'Mon-Sun: 10:00 - 22:00'}</p>
+                      <p className="text-gray-400 text-sm md:text-base">{language === 'ru' ? 'Без выходных' : 'No days off'}</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-3 md:gap-4">
                     <Icon name="Phone" size={24} className="text-primary flex-shrink-0 md:w-8 md:h-8" />
                     <div>
-                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">ТЕЛЕФОН</h3>
+                      <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2">{language === 'ru' ? 'ТЕЛЕФОН' : 'PHONE'}</h3>
                       <a href="tel:+79841563771" className="text-primary text-sm md:text-lg hover:text-primary/80 transition-colors">
                         +7 (984) 156-37-71
                       </a>
@@ -405,7 +412,7 @@ export default function Index() {
                   </div>
 
                   <div className="md:hidden absolute top-4 left-1/2 -translate-x-1/2 bg-black/60 px-4 py-2 rounded-full text-white text-sm">
-                    Свайп для пролистывания
+                    {language === 'ru' ? 'Свайп для пролистывания' : 'Swipe to scroll'}
                   </div>
                 </>
               )}
@@ -420,7 +427,7 @@ export default function Index() {
                   window.open('https://n1056280.yclients.com/', '_blank');
                 }}
               >
-                ЗАПИСАТЬСЯ СЕЙЧАС
+                {language === 'ru' ? 'ЗАПИСАТЬСЯ СЕЙЧАС' : 'BOOK NOW'}
               </Button>
             </div>
           </div>
