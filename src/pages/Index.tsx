@@ -319,11 +319,21 @@ export default function Index() {
               </div>
 
               <div className="flex gap-3 md:gap-4">
-                <Button variant="outline" size="lg" className="flex-1 border-primary text-primary hover:bg-primary hover:text-black text-sm md:text-base py-5 md:py-6">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="flex-1 border-primary text-primary hover:bg-primary hover:text-black text-sm md:text-base py-5 md:py-6"
+                  onClick={() => window.open('https://www.instagram.com/onebarbershop_vl', '_blank')}
+                >
                   <Icon name="Instagram" size={20} className="mr-1 md:mr-2 md:w-6 md:h-6" />
                   <span className="hidden sm:inline">Instagram</span>
                 </Button>
-                <Button variant="outline" size="lg" className="flex-1 border-primary text-primary hover:bg-primary hover:text-black text-sm md:text-base py-5 md:py-6">
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  className="flex-1 border-primary text-primary hover:bg-primary hover:text-black text-sm md:text-base py-5 md:py-6"
+                  onClick={() => window.open('https://wa.me/79841563771', '_blank')}
+                >
                   <Icon name="MessageCircle" size={20} className="mr-1 md:mr-2 md:w-6 md:h-6" />
                   <span className="hidden sm:inline">WhatsApp</span>
                 </Button>
