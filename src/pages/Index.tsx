@@ -98,8 +98,13 @@ export default function Index() {
       </nav>
 
       {showMobileMenu && (
-        <div className="fixed top-[60px] left-0 right-0 bg-black/95 backdrop-blur-md z-40 border-b border-primary/20 md:hidden animate-slide-down">
-          <div className="flex flex-col p-4 gap-4">
+        <>
+          <div 
+            className="fixed inset-0 z-30 md:hidden" 
+            onClick={() => setShowMobileMenu(false)}
+          />
+          <div className="fixed top-[60px] left-0 right-0 bg-black/95 backdrop-blur-md z-40 border-b border-primary/20 md:hidden animate-slide-down">
+            <div className="flex flex-col p-4 gap-4">
             <button 
               onClick={() => {
                 setShowServicesModal(true);
@@ -134,6 +139,7 @@ export default function Index() {
             </a>
           </div>
         </div>
+        </>
       )}
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
