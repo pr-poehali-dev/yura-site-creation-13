@@ -32,7 +32,6 @@ export default function Index() {
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
-    'https://cdn.poehali.dev/files/ca1667af-1edb-4ee1-86c9-40ba375f40dd.jpg',
     'https://cdn.poehali.dev/files/75dfb668-4be5-48be-9fd4-da639ed5ad0d.jpg'
   ];
 
