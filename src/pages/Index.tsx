@@ -15,7 +15,7 @@ const services = [
 ];
 
 const portfolio = [
-  'https://cdn.poehali.dev/files/23fa58e9-ad6f-40e8-b148-fbc26e28384e.jpeg',
+  'https://images.unsplash.com/photo-1621605815971-fbc98d665033?w=600&h=600&fit=crop',
   'https://images.unsplash.com/photo-1622286342621-4bd786c2447c?w=600&h=600&fit=crop',
   'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=600&fit=crop',
   'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&h=600&fit=crop',
