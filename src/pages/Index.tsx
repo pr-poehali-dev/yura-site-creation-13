@@ -220,7 +220,7 @@ export default function Index() {
             <div className="relative">
               <div className="aspect-square rounded-lg overflow-hidden">
                 <img 
-                  src="https://cdn.poehali.dev/files/87766903-4f2c-4bf8-8d1b-679d9050d4c4.jpeg"
+                  src="https://cdn.poehali.dev/files/3cc3ed7b-4f93-4784-9f57-a532423f34ac.jpg"
                   alt="Интерьер"
                   className="w-full h-full object-cover"
                 />
