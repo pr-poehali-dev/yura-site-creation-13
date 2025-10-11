@@ -26,6 +26,7 @@ const portfolio = [
 export default function Index() {
   const [form, setForm] = useState({ name: '', phone: '' });
   const [showServicesModal, setShowServicesModal] = useState(false);
+  const [showReviewsModal, setShowReviewsModal] = useState(false);
   const [currentServiceImage, setCurrentServiceImage] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
@@ -71,7 +72,7 @@ export default function Index() {
           <div className="hidden md:flex gap-8">
             <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">{language === 'ru' ? 'Услуги' : 'Services'}</button>
             <a href="#portfolio" className="hover:text-primary transition-colors">{language === 'ru' ? 'Работы' : 'Portfolio'}</a>
-            <a href="https://2gis.ru/vladivostok/firm/70000001080725498/tab/reviews" target="_blank" rel="noopener noreferrer" className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</a>
+            <button onClick={() => setShowReviewsModal(true)} className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</button>
             <a href="#contacts" className="hover:text-primary transition-colors">{language === 'ru' ? 'Контакты' : 'Contacts'}</a>
           </div>
           <div className="flex items-center gap-3">
@@ -357,6 +358,25 @@ export default function Index() {
           </p>
         </div>
       </footer>
+
+      {showReviewsModal && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
+          onClick={() => setShowReviewsModal(false)}
+        >
+          <div className="relative max-w-4xl w-full h-[80vh]" onClick={(e) => e.stopPropagation()}>
+            <button
+              onClick={() => setShowReviewsModal(false)}
+              className="absolute -top-12 right-0 text-white hover:text-primary transition-colors z-10"
+            >
+              <Icon name="X" size={40} />
+            </button>
+            <div className="bg-zinc-900 rounded-lg p-6 h-full overflow-auto">
+              <div className="sw-app" data-app="d200486f3453f2f42f98c88a98746150"></div>
+            </div>
+          </div>
+        </div>
+      )}
 
       {showServicesModal && (
         <div 
