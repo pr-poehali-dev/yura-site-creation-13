@@ -97,3 +97,61 @@
   opacity: 1;
   transform: translateY(0);
 }
+
+/* Smoke effect */
+.smoke {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 255, 255, 0.05) 0%,
+    transparent 70%
+  );
+  filter: blur(60px);
+  opacity: 0;
+  animation: smokeFloat 20s infinite ease-in-out;
+}
+
+.smoke-1 {
+  left: 10%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.smoke-2 {
+  right: 15%;
+  top: 40%;
+  animation-delay: 7s;
+  width: 500px;
+  height: 500px;
+}
+
+.smoke-3 {
+  left: 50%;
+  bottom: 30%;
+  animation-delay: 14s;
+  width: 550px;
+  height: 550px;
+}
+
+@keyframes smokeFloat {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(0) translateX(0) scale(1);
+  }
+  25% {
+    opacity: 0.3;
+    transform: translateY(-80px) translateX(30px) scale(1.1);
+  }
+  50% {
+    opacity: 0.15;
+    transform: translateY(-120px) translateX(-20px) scale(1.2);
+  }
+  75% {
+    opacity: 0.25;
+    transform: translateY(-60px) translateX(40px) scale(1.15);
+  }
+}
