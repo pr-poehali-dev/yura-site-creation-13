@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -52,14 +52,30 @@ export default function Index() {
 
   const handleTouchEnd = () => {
     if (touchStart - touchEnd > 75) {
-      // Swipe left
       setCurrentServiceImage((prev) => (prev === serviceImages.length - 1 ? 0 : prev + 1));
     }
     if (touchStart - touchEnd < -75) {
-      // Swipe right
       setCurrentServiceImage((prev) => (prev === 0 ? serviceImages.length - 1 : prev - 1));
     }
   };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('animate-in');
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    const elements = document.querySelectorAll('.fade-in-section');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -176,7 +192,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="portfolio" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900">
+      <section id="portfolio" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900 fade-in-section">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
             {language === 'ru' ? 'НАШИ' : 'OUR'} <span className="text-primary">{language === 'ru' ? 'РАБОТЫ' : 'WORK'}</span>
@@ -187,7 +203,8 @@ export default function Index() {
             {portfolio.map((img, index) => (
               <div 
                 key={index} 
-                className="aspect-square overflow-hidden relative group cursor-pointer"
+                className="aspect-square overflow-hidden relative group cursor-pointer fade-in-section"
+                style={{ transitionDelay: `${index * 0.1}s` }}
                 onClick={() => setSelectedImage(index)}
               >
                 <img 
@@ -204,10 +221,10 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-zinc-900 to-black">
+      <section className="py-16 md:py-24 px-4 bg-gradient-to-b from-zinc-900 to-black fade-in-section">
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
-            <div>
+            <div className="fade-in-section">
               <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6">
                 {language === 'ru' ? 'О' : 'ABOUT'} <span className="text-primary">{language === 'ru' ? 'БАРБЕРШОПЕ' : 'BARBERSHOP'}</span>
               </h2>
@@ -239,7 +256,7 @@ export default function Index() {
 
               </div>
             </div>
-            <div className="relative">
+            <div className="relative fade-in-section">
               <div className="aspect-square rounded-lg overflow-hidden">
                 <img 
                   src="https://cdn.poehali.dev/files/f5705108-be0d-4eaf-a288-50c26571ee22.jpg"
@@ -253,7 +270,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="contacts" className="py-16 md:py-24 px-4 bg-black">
+      <section id="contacts" className="py-16 md:py-24 px-4 bg-black fade-in-section">
         <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
             <span className="text-primary">{language === 'ru' ? 'КОНТАКТЫ' : 'CONTACTS'}</span>
@@ -261,7 +278,7 @@ export default function Index() {
           <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Запишитесь на удобное время' : 'Book a Convenient Time'}</p>
           
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
-              <Card className="bg-zinc-900/50 border-primary/20">
+              <Card className="bg-zinc-900/50 border-primary/20 fade-in-section">
                 <CardContent className="p-6 md:p-8">
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <Icon name="MapPin" size={24} className="text-primary flex-shrink-0 md:w-8 md:h-8" />
@@ -290,7 +307,7 @@ export default function Index() {
                 </CardContent>
               </Card>
 
-              <div className="aspect-video w-full bg-zinc-800 rounded-lg overflow-hidden">
+              <div className="aspect-video w-full bg-zinc-800 rounded-lg overflow-hidden fade-in-section">
                 <iframe 
                   src="https://yandex.ru/map-widget/v1/?ll=131.885,43.115&z=16&pt=131.885,43.115,pm2rdm"
                   width="100%"
@@ -300,7 +317,7 @@ export default function Index() {
                 />
               </div>
 
-            <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 fade-in-section">
               <Button 
                 variant="outline" 
                 size="lg" 
