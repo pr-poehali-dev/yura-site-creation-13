@@ -179,6 +179,13 @@ export default function Index() {
           <div className="smoke smoke-3"></div>
         </div>
         
+        {/* Sparks effect */}
+        <div className="absolute inset-0 z-15 overflow-hidden">
+          {[...Array(15)].map((_, i) => (
+            <div key={i} className={`spark spark-${i + 1}`}></div>
+          ))}
+        </div>
+        
         <div className="relative z-20 text-center px-4 max-w-4xl animate-fade-in">
           <h1 className="text-5xl sm:text-7xl md:text-9xl font-bold mb-4 md:mb-6 tracking-wider">
             <span className="block text-white">ONE</span>

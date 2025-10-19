@@ -155,3 +155,98 @@
     transform: translateY(-60px) translateX(40px) scale(1.15);
   }
 }
+
+/* Sparks effect */
+.spark {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: #ffa500;
+  border-radius: 50%;
+  box-shadow:
+    0 0 4px #ffa500,
+    0 0 8px #ff6b00;
+  opacity: 0;
+  animation: sparkFall 8s infinite ease-in;
+}
+
+.spark-1 {
+  left: 15%;
+  animation-delay: 0s;
+}
+.spark-2 {
+  left: 25%;
+  animation-delay: 1.2s;
+}
+.spark-3 {
+  left: 35%;
+  animation-delay: 2.4s;
+}
+.spark-4 {
+  left: 45%;
+  animation-delay: 3.6s;
+}
+.spark-5 {
+  left: 55%;
+  animation-delay: 4.8s;
+}
+.spark-6 {
+  left: 65%;
+  animation-delay: 0.6s;
+}
+.spark-7 {
+  left: 75%;
+  animation-delay: 1.8s;
+}
+.spark-8 {
+  left: 85%;
+  animation-delay: 3s;
+}
+.spark-9 {
+  left: 20%;
+  animation-delay: 4.2s;
+}
+.spark-10 {
+  left: 40%;
+  animation-delay: 5.4s;
+}
+.spark-11 {
+  left: 60%;
+  animation-delay: 6.6s;
+}
+.spark-12 {
+  left: 80%;
+  animation-delay: 7.8s;
+}
+.spark-13 {
+  left: 10%;
+  animation-delay: 2s;
+}
+.spark-14 {
+  left: 50%;
+  animation-delay: 3.5s;
+}
+.spark-15 {
+  left: 70%;
+  animation-delay: 5s;
+}
+
+@keyframes sparkFall {
+  0% {
+    top: -5%;
+    opacity: 0;
+    transform: translateX(0) scale(1);
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(calc(var(--tx, 20px))) scale(0.8);
+  }
+  100% {
+    top: 105%;
+    opacity: 0;
+    transform: translateX(calc(var(--tx, 40px))) scale(0.3);
+  }
+}
