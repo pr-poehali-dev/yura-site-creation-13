@@ -32,6 +32,7 @@ export default function Index() {
   const [touchStart, setTouchStart] = useState(0);
   const [touchEnd, setTouchEnd] = useState(0);
   const [language, setLanguage] = useState<'ru' | 'en'>('ru');
+  const [selectedImage, setSelectedImage] = useState<number | null>(null);
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
@@ -227,6 +228,7 @@ export default function Index() {
               <div 
                 key={index} 
                 className="aspect-square overflow-hidden relative group cursor-pointer"
+                onClick={() => setSelectedImage(index)}
               >
                 <img 
                   src={img} 
@@ -512,6 +514,51 @@ export default function Index() {
               </Button>
             </div>
           </div>
+        </div>
+      )}
+
+      {selectedImage !== null && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
+          onClick={() => setSelectedImage(null)}
+        >
+          <button
+            onClick={() => setSelectedImage(null)}
+            className="absolute top-4 right-4 text-white hover:text-primary transition-colors z-10"
+          >
+            <Icon name="X" size={40} />
+          </button>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(selectedImage === 0 ? portfolio.length - 1 : selectedImage - 1);
+            }}
+            className="absolute left-4 text-white hover:text-primary transition-colors z-10"
+          >
+            <Icon name="ChevronLeft" size={60} />
+          </button>
+
+          <div className="max-w-5xl w-full max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
+            <img 
+              src={portfolio[selectedImage]} 
+              alt={`Работа ${selectedImage + 1}`}
+              className="w-full h-full object-contain"
+            />
+            <p className="text-center text-gray-400 mt-4 text-lg">
+              {selectedImage + 1} / {portfolio.length}
+            </p>
+          </div>
+
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setSelectedImage(selectedImage === portfolio.length - 1 ? 0 : selectedImage + 1);
+            }}
+            className="absolute right-4 text-white hover:text-primary transition-colors z-10"
+          >
+            <Icon name="ChevronRight" size={60} />
+          </button>
         </div>
       )}
     </div>
