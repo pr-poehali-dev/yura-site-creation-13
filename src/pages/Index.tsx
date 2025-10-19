@@ -36,6 +36,14 @@ export default function Index() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [language, setLanguage] = useState<'ru' | 'en'>('ru');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [currentHeroImage, setCurrentHeroImage] = useState(0);
+
+  const heroImages = [
+    'https://cdn.poehali.dev/files/4018c35d-956e-4537-9bb3-0ba30a5e2f6d.jpg',
+    'https://cdn.poehali.dev/files/3d497016-0b5d-48f5-a121-2ea137d78be7.jpg',
+    'https://cdn.poehali.dev/files/0b2a8854-623b-45b5-9a65-5eee671db493.jpg',
+    'https://cdn.poehali.dev/files/cc4fc154-d79c-465b-a07b-25339ad95857.jpg'
+  ];
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
@@ -88,6 +96,14 @@ export default function Index() {
 
     return () => clearInterval(interval);
   }, [serviceImages.length]);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentHeroImage((prev) => (prev === heroImages.length - 1 ? 0 : prev + 1));
+    }, 2000);
+
+    return () => clearInterval(interval);
+  }, [heroImages.length]);
 
   return (
     <div className="min-h-screen bg-black text-white relative">
@@ -181,14 +197,19 @@ export default function Index() {
       )}
 
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black z-10" />
-        <div 
-          className="absolute inset-0 bg-cover bg-center scale-110"
-          style={{ 
-            backgroundImage: `url('https://cdn.poehali.dev/files/767ba021-15d3-49ec-81dd-956219f5f777.jpg')`,
-            filter: 'brightness(0.7)'
-          }}
-        />
+        {heroImages.map((img, index) => (
+          <div
+            key={index}
+            className={`absolute inset-0 bg-cover bg-center transition-opacity duration-1000 ${
+              index === currentHeroImage ? 'opacity-100' : 'opacity-0'
+            }`}
+            style={{
+              backgroundImage: `url('${img}')`,
+              filter: 'brightness(0.4)'
+            }}
+          />
+        ))}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black z-10" />
         
         {/* Smoke effect */}
         <div className="absolute inset-0 z-15">
