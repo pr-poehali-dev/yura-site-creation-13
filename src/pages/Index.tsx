@@ -260,47 +260,7 @@ export default function Index() {
           </h2>
           <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Запишитесь на удобное время' : 'Book a Convenient Time'}</p>
           
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12">
-            <Card className="bg-zinc-900/50 border-primary/20">
-              <CardContent className="p-6 md:p-8">
-                <h3 className="text-xl md:text-2xl font-bold mb-4 md:mb-6 text-primary">{language === 'ru' ? 'ОНЛАЙН ЗАПИСЬ' : 'ONLINE BOOKING'}</h3>
-                <form className="space-y-4 md:space-y-6">
-                  <div>
-                    <Label htmlFor="name" className="text-white text-base md:text-lg mb-2 block">{language === 'ru' ? 'Ваше имя' : 'Your Name'}</Label>
-                    <Input 
-                      id="name"
-                      placeholder={language === 'ru' ? 'Введите имя' : 'Enter name'}
-                      value={form.name}
-                      onChange={(e) => setForm({ ...form, name: e.target.value })}
-                      className="bg-black border-primary/30 text-white text-base md:text-lg py-5 md:py-6"
-                    />
-                  </div>
-                  <div>
-                    <Label htmlFor="phone" className="text-white text-base md:text-lg mb-2 block">{language === 'ru' ? 'Телефон' : 'Phone'}</Label>
-                    <Input 
-                      id="phone"
-                      type="tel"
-                      placeholder="+7 (___) ___-__-__"
-                      value={form.phone}
-                      onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                      className="bg-black border-primary/30 text-white text-base md:text-lg py-5 md:py-6"
-                    />
-                  </div>
-                  <Button 
-                    type="button"
-                    className="w-full bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg py-5 md:py-6"
-                    onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
-                  >
-                    {language === 'ru' ? 'ОТПРАВИТЬ ЗАЯВКУ' : 'SUBMIT REQUEST'}
-                  </Button>
-                  <p className="text-xs md:text-sm text-gray-400 text-center">
-                    {language === 'ru' ? 'Мы перезвоним вам в течение 15 минут' : 'We will call you back within 15 minutes'}
-                  </p>
-                </form>
-              </CardContent>
-            </Card>
-
-            <div className="space-y-4 md:space-y-6">
+          <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
               <Card className="bg-zinc-900/50 border-primary/20">
                 <CardContent className="p-6 md:p-8">
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
