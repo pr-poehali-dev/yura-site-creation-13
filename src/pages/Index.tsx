@@ -78,7 +78,13 @@ export default function Index() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white">
+    <div className="min-h-screen bg-black text-white relative">
+      {/* Global smoke effect across entire page */}
+      <div className="fixed inset-0 pointer-events-none z-[100] overflow-hidden">
+        {[...Array(20)].map((_, i) => (
+          <div key={i} className={`global-smoke global-smoke-${i + 1}`}></div>
+        ))}
+      </div>
       <nav className="fixed top-0 w-full bg-black/90 backdrop-blur-sm z-50 border-b border-primary/20">
         <div className="max-w-7xl mx-auto px-4 py-3 md:py-4 flex justify-between items-center">
           <div className="flex items-center gap-1 md:gap-2">
