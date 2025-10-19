@@ -39,7 +39,11 @@ export default function Index() {
 
   const serviceImages = [
     'https://cdn.poehali.dev/files/ece6e776-a586-4664-9796-edd65ef34279.jpg',
-    'https://cdn.poehali.dev/files/75dfb668-4be5-48be-9fd4-da639ed5ad0d.jpg'
+    'https://cdn.poehali.dev/files/75dfb668-4be5-48be-9fd4-da639ed5ad0d.jpg',
+    'https://cdn.poehali.dev/files/1a0cb7db-0ef5-4148-a364-f9a0ee62024f.jpg',
+    'https://cdn.poehali.dev/files/edf1638a-1cd6-4fc8-a763-af5e937ec548.jpg',
+    'https://cdn.poehali.dev/files/0463d79c-4f72-4f73-9f8d-96732a9452f1.jpg',
+    'https://cdn.poehali.dev/files/64068634-143a-4295-8ebe-48bf55d19e3f.jpg'
   ];
 
   const handleTouchStart = (e: React.TouchEvent) => {
@@ -76,6 +80,14 @@ export default function Index() {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentServiceImage((prev) => (prev === serviceImages.length - 1 ? 0 : prev + 1));
+    }, 4000);
+
+    return () => clearInterval(interval);
+  }, [serviceImages.length]);
 
   return (
     <div className="min-h-screen bg-black text-white relative">
