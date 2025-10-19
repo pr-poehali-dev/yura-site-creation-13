@@ -177,6 +177,11 @@ export default function Index() {
           <div className="smoke smoke-1"></div>
           <div className="smoke smoke-2"></div>
           <div className="smoke smoke-3"></div>
+          <div className="smoke smoke-4"></div>
+          <div className="smoke smoke-5"></div>
+          <div className="smoke smoke-6"></div>
+          <div className="smoke smoke-7"></div>
+          <div className="smoke smoke-8"></div>
         </div>
         
         {/* Sparks effect */}
