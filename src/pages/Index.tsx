@@ -15,6 +15,7 @@ const services = [
 ];
 
 const portfolio = [
+  'https://cdn.poehali.dev/files/ce0c28cc-4c9f-4458-8226-5758e5845bf1.jpeg',
   'https://cdn.poehali.dev/files/d7a8b9a6-45ba-4af5-8cc8-9f36f3c275a2.jpg',
   'https://cdn.poehali.dev/files/fdc339eb-0940-4122-bfe4-e307a2ae3f4c.jpg',
   'https://cdn.poehali.dev/files/7bfe7385-960f-493f-8f89-5d85b50f272c.jpg',
@@ -22,8 +23,7 @@ const portfolio = [
   'https://cdn.poehali.dev/files/fd86673a-8ce6-46c7-a665-2cbc5df0113a.jpg',
   'https://images.unsplash.com/photo-1503951914875-452162b0f3f1?w=600&h=600&fit=crop',
   'https://images.unsplash.com/photo-1599351431202-1e0f0137899a?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop',
-  'https://images.unsplash.com/photo-1605497788044-5a32c7078486?w=600&h=600&fit=crop'
+  'https://images.unsplash.com/photo-1622287162716-f311baa1a2b8?w=600&h=600&fit=crop'
 ];
 
 export default function Index() {
