@@ -363,7 +363,7 @@ export default function Index() {
                   variant="outline" 
                   size="lg" 
                   className="flex-1 border-primary text-primary hover:bg-primary hover:text-black text-sm md:text-base py-5 md:py-6"
-                  onClick={() => window.open('https://t.me/onebarbershop_vl', '_blank')}
+                  onClick={() => window.open('https://t.me/one_barbershop1', '_blank')}
                 >
                   <Icon name="Send" size={20} className="mr-1 md:mr-2 md:w-6 md:h-6" />
                   <span className="hidden sm:inline">Telegram</span>
