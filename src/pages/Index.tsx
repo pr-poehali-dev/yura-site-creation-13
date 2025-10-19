@@ -177,40 +177,25 @@ export default function Index() {
       </section>
 
       <section id="services" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900">
-        <div className="max-w-7xl mx-auto">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
+        <div className="max-w-7xl mx-auto text-center">
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6">
             <span className="text-primary">{language === 'ru' ? 'УСЛУГИ' : 'SERVICES'}</span> {language === 'ru' ? 'И ЦЕНЫ' : 'AND PRICES'}
           </h2>
-          <p className="text-center text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Профессиональный уход для мужчин' : 'Professional Care for Men'}</p>
+          <p className="text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Профессиональный уход для мужчин' : 'Professional Care for Men'}</p>
           
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6 max-w-5xl mx-auto">
-            {services.map((service, index) => (
-              <div
-                key={index}
-                className="group relative overflow-hidden bg-zinc-800/50 border border-primary/20 hover:border-primary transition-all duration-300"
-                style={{ animationDelay: `${index * 100}ms` }}
-              >
-                <div className="p-6 md:p-8">
-                  <div className="flex items-start justify-between mb-3 md:mb-4">
-                    <Icon name={service.icon} size={32} className="text-primary sm:w-10 sm:h-10" />
-                    <div className="text-right">
-                      <div className="text-2xl md:text-3xl font-bold text-primary">{service.price}</div>
-                      <div className="text-xs md:text-sm text-gray-400">руб</div>
-                    </div>
-                  </div>
-                  <h3 className="text-base md:text-xl font-semibold text-white group-hover:text-primary transition-colors">
-                    {language === 'ru' ? service.title : service.titleEn}
-                  </h3>
-                </div>
-                <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-primary to-yellow-400 scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
-              </div>
-            ))}
-          </div>
-
-          <div className="text-center mt-12 md:mt-16">
+          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
             <Button 
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6"
+              variant="outline"
+              className="border-primary text-primary hover:bg-primary hover:text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6 w-full sm:w-auto"
+              onClick={() => setShowServicesModal(true)}
+            >
+              <Icon name="FileText" size={24} className="mr-2" />
+              {language === 'ru' ? 'ПРАЙС-ЛИСТ' : 'PRICE LIST'}
+            </Button>
+            <Button 
+              size="lg"
+              className="bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6 w-full sm:w-auto"
               onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
             >
               {language === 'ru' ? 'ЗАПИСАТЬСЯ НА СТРИЖКУ' : 'BOOK A HAIRCUT'}
