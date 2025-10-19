@@ -176,35 +176,7 @@ export default function Index() {
         </div>
       </section>
 
-      <section id="services" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold mb-4 md:mb-6">
-            <span className="text-primary">{language === 'ru' ? 'УСЛУГИ' : 'SERVICES'}</span> {language === 'ru' ? 'И ЦЕНЫ' : 'AND PRICES'}
-          </h2>
-          <p className="text-gray-400 mb-12 md:mb-16 text-base md:text-xl">{language === 'ru' ? 'Профессиональный уход для мужчин' : 'Professional Care for Men'}</p>
-          
-          <div className="flex flex-col sm:flex-row gap-4 md:gap-6 justify-center items-center">
-            <Button 
-              size="lg"
-              variant="outline"
-              className="border-primary text-primary hover:bg-primary hover:text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6 w-full sm:w-auto"
-              onClick={() => setShowServicesModal(true)}
-            >
-              <Icon name="FileText" size={24} className="mr-2" />
-              {language === 'ru' ? 'ПРАЙС-ЛИСТ' : 'PRICE LIST'}
-            </Button>
-            <Button 
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-black font-bold text-base md:text-lg px-8 md:px-10 py-5 md:py-6 w-full sm:w-auto"
-              onClick={() => window.open('https://n1056280.yclients.com/', '_blank')}
-            >
-              {language === 'ru' ? 'ЗАПИСАТЬСЯ НА СТРИЖКУ' : 'BOOK A HAIRCUT'}
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      <section id="portfolio" className="py-16 md:py-24 px-4 bg-zinc-900">
+      <section id="portfolio" className="py-16 md:py-24 px-4 bg-gradient-to-b from-black to-zinc-900">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-bold text-center mb-4 md:mb-6">
             {language === 'ru' ? 'НАШИ' : 'OUR'} <span className="text-primary">{language === 'ru' ? 'РАБОТЫ' : 'WORK'}</span>
