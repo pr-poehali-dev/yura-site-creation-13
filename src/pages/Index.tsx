@@ -440,19 +440,11 @@ export default function Index() {
         <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_3d5a351b2f.mp3" type="audio/mpeg" />
       </audio>
 
-      <button
-        onClick={toggleMusic}
-        className="fixed bottom-24 right-6 z-50 bg-primary hover:bg-primary/80 text-black p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
-        aria-label={isPlaying ? 'Pause music' : 'Play music'}
-      >
-        <Icon name={isPlaying ? 'Pause' : 'Music'} size={24} />
-      </button>
-
       <a
         href="https://wa.me/79841563771?text=Здравствуйте!%20Хочу%20записаться%20в%20барбершоп"
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 animate-pulse"
+        className="fixed bottom-6 right-6 z-50 bg-primary hover:bg-primary/80 text-black p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 animate-pulse"
         aria-label="WhatsApp"
       >
         <Icon name="MessageCircle" size={28} />
