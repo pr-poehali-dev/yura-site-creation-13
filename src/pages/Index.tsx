@@ -441,7 +441,7 @@ export default function Index() {
       </section>
 
       <audio ref={audioRef} loop>
-        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg" />
+        <source src="https://cdn.pixabay.com/download/audio/2022/03/10/audio_3d5a351b2f.mp3" type="audio/mpeg" />
       </audio>
 
       <button
