@@ -37,6 +37,8 @@ export default function Index() {
   const [language, setLanguage] = useState<'ru' | 'en'>('ru');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
+  const [galleryTouchStart, setGalleryTouchStart] = useState(0);
+  const [galleryTouchEnd, setGalleryTouchEnd] = useState(0);
 
   const heroImages = [
     'https://cdn.poehali.dev/files/4018c35d-956e-4537-9bb3-0ba30a5e2f6d.jpg',
@@ -68,6 +70,23 @@ export default function Index() {
     }
     if (touchStart - touchEnd < -75) {
       setCurrentServiceImage((prev) => (prev === 0 ? serviceImages.length - 1 : prev - 1));
+    }
+  };
+
+  const handleGalleryTouchStart = (e: React.TouchEvent) => {
+    setGalleryTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleGalleryTouchMove = (e: React.TouchEvent) => {
+    setGalleryTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleGalleryTouchEnd = () => {
+    if (galleryTouchStart - galleryTouchEnd > 75) {
+      setSelectedImage((prev) => prev !== null ? (prev === portfolio.length - 1 ? 0 : prev + 1) : null);
+    }
+    if (galleryTouchStart - galleryTouchEnd < -75) {
+      setSelectedImage((prev) => prev !== null ? (prev === 0 ? portfolio.length - 1 : prev - 1) : null);
     }
   };
 
@@ -533,12 +552,19 @@ export default function Index() {
             <Icon name="ChevronLeft" size={40} className="sm:w-14 sm:h-14" />
           </button>
 
-          <div className="w-full h-full flex flex-col items-center justify-center max-w-6xl mx-auto px-12 sm:px-16" onClick={(e) => e.stopPropagation()}>
+          <div 
+            className="w-full h-full flex flex-col items-center justify-center max-w-6xl mx-auto px-12 sm:px-16" 
+            onClick={(e) => e.stopPropagation()}
+            onTouchStart={handleGalleryTouchStart}
+            onTouchMove={handleGalleryTouchMove}
+            onTouchEnd={handleGalleryTouchEnd}
+          >
             <div className="relative w-full h-full flex items-center justify-center">
               <img 
                 src={portfolio[selectedImage]} 
                 alt={`Работа ${selectedImage + 1}`}
-                className="max-w-full max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-100px)] w-auto h-auto object-contain"
+                className="max-w-full max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-100px)] w-auto h-auto object-contain select-none"
+                draggable={false}
               />
             </div>
             <p className="text-center text-gray-400 mt-4 text-base sm:text-lg font-medium">
