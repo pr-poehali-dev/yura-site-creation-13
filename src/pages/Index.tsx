@@ -513,14 +513,14 @@ export default function Index() {
 
       {selectedImage !== null && (
         <div 
-          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-2 sm:p-4"
           onClick={() => setSelectedImage(null)}
         >
           <button
             onClick={() => setSelectedImage(null)}
-            className="absolute top-4 right-4 text-white hover:text-primary transition-colors z-10"
+            className="absolute top-2 right-2 sm:top-4 sm:right-4 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
           >
-            <Icon name="X" size={40} />
+            <Icon name="X" size={32} className="sm:w-10 sm:h-10" />
           </button>
           
           <button
@@ -528,18 +528,20 @@ export default function Index() {
               e.stopPropagation();
               setSelectedImage(selectedImage === 0 ? portfolio.length - 1 : selectedImage - 1);
             }}
-            className="absolute left-4 text-white hover:text-primary transition-colors z-10"
+            className="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
           >
-            <Icon name="ChevronLeft" size={60} />
+            <Icon name="ChevronLeft" size={40} className="sm:w-14 sm:h-14" />
           </button>
 
-          <div className="max-w-5xl w-full max-h-[90vh]" onClick={(e) => e.stopPropagation()}>
-            <img 
-              src={portfolio[selectedImage]} 
-              alt={`Работа ${selectedImage + 1}`}
-              className="w-full h-full object-contain"
-            />
-            <p className="text-center text-gray-400 mt-4 text-lg">
+          <div className="w-full h-full flex flex-col items-center justify-center max-w-6xl mx-auto px-12 sm:px-16" onClick={(e) => e.stopPropagation()}>
+            <div className="relative w-full h-full flex items-center justify-center">
+              <img 
+                src={portfolio[selectedImage]} 
+                alt={`Работа ${selectedImage + 1}`}
+                className="max-w-full max-h-[calc(100vh-120px)] sm:max-h-[calc(100vh-100px)] w-auto h-auto object-contain"
+              />
+            </div>
+            <p className="text-center text-gray-400 mt-4 text-base sm:text-lg font-medium">
               {selectedImage + 1} / {portfolio.length}
             </p>
           </div>
@@ -549,9 +551,9 @@ export default function Index() {
               e.stopPropagation();
               setSelectedImage(selectedImage === portfolio.length - 1 ? 0 : selectedImage + 1);
             }}
-            className="absolute right-4 text-white hover:text-primary transition-colors z-10"
+            className="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 text-white hover:text-primary transition-colors z-10 bg-black/50 rounded-full p-2"
           >
-            <Icon name="ChevronRight" size={60} />
+            <Icon name="ChevronRight" size={40} className="sm:w-14 sm:h-14" />
           </button>
         </div>
       )}
