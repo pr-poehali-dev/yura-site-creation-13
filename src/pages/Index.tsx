@@ -430,7 +430,7 @@ export default function Index() {
       <footer className="py-6 md:py-8 px-4 bg-black border-t border-primary/20">
         <div className="max-w-7xl mx-auto text-center">
           <p className="text-gray-400 text-sm md:text-base">
-            © 2024 ONEBarbershop. Все права защищены.
+            © 2024 ONEBarbershop. {language === 'ru' ? 'Все права защищены.' : 'All rights reserved.'}
           </p>
         </div>
       </footer>
