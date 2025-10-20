@@ -41,6 +41,7 @@ export default function Index() {
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const [galleryTouchStart, setGalleryTouchStart] = useState(0);
   const [galleryTouchEnd, setGalleryTouchEnd] = useState(0);
+  const [showPrivacyModal, setShowPrivacyModal] = useState(false);
 
   const heroImages = [
     'https://cdn.poehali.dev/files/4018c35d-956e-4537-9bb3-0ba30a5e2f6d.jpg',
@@ -463,10 +464,16 @@ export default function Index() {
       </a>
 
       <footer className="py-6 md:py-8 px-4 bg-black border-t border-primary/20">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center space-y-3">
           <p className="text-gray-400 text-sm md:text-base">
             © 2024 ONEBarbershop. {language === 'ru' ? 'Все права защищены.' : 'All rights reserved.'}
           </p>
+          <button
+            onClick={() => setShowPrivacyModal(true)}
+            className="text-primary hover:text-primary/80 text-sm underline transition-colors"
+          >
+            {language === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}
+          </button>
         </div>
       </footer>
 
@@ -560,6 +567,127 @@ export default function Index() {
               >
                 {language === 'ru' ? 'ЗАПИСАТЬСЯ СЕЙЧАС' : 'BOOK NOW'}
               </Button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {showPrivacyModal && (
+        <div 
+          className="fixed inset-0 bg-black/95 z-[100] flex items-center justify-center p-4 overflow-y-auto"
+          onClick={() => setShowPrivacyModal(false)}
+        >
+          <div 
+            className="relative max-w-4xl w-full bg-zinc-900 rounded-lg p-6 md:p-8 my-8"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowPrivacyModal(false)}
+              className="absolute top-4 right-4 text-white hover:text-primary transition-colors"
+            >
+              <Icon name="X" size={32} />
+            </button>
+
+            <h2 className="text-2xl md:text-4xl font-bold text-primary mb-6">
+              {language === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}
+            </h2>
+
+            <div className="text-gray-300 space-y-4 text-sm md:text-base">
+              {language === 'ru' ? (
+                <>
+                  <p className="text-gray-400 text-sm">Дата вступления в силу: 20 октября 2024</p>
+                  
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">1. Сбор информации</h3>
+                  <p>ONEBarbershop собирает следующую информацию:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Имя и номер телефона при записи на услуги</li>
+                    <li>Информация о посещениях и предпочтениях услуг</li>
+                    <li>Данные взаимодействия через WhatsApp, Telegram, Instagram</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">2. Использование информации</h3>
+                  <p>Мы используем собранную информацию для:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Подтверждения и управления записями</li>
+                    <li>Улучшения качества обслуживания</li>
+                    <li>Отправки напоминаний о записях</li>
+                    <li>Информирования об акциях и новых услугах</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">3. Защита данных</h3>
+                  <p>ONEBarbershop принимает меры для защиты ваших персональных данных. Мы не передаём вашу информацию третьим лицам без вашего согласия, за исключением случаев, предусмотренных законом.</p>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">4. Cookies</h3>
+                  <p>Наш сайт использует cookies для улучшения пользовательского опыта. Вы можете отключить cookies в настройках браузера.</p>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">5. Ваши права</h3>
+                  <p>Вы имеете право:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Запросить доступ к вашим персональным данным</li>
+                    <li>Запросить исправление неточных данных</li>
+                    <li>Запросить удаление ваших данных</li>
+                    <li>Отозвать согласие на обработку данных</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">6. Контакты</h3>
+                  <p>По вопросам конфиденциальности свяжитесь с нами:</p>
+                  <ul className="list-none space-y-2 ml-4">
+                    <li>📍 Адрес: ул. Адм.Фокина 9а, Владивосток</li>
+                    <li>📞 Телефон: +7 (984) 156-37-71</li>
+                    <li>💬 WhatsApp: +7 (984) 156-37-71</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">7. Изменения политики</h3>
+                  <p>Мы можем обновлять эту политику конфиденциальности. Все изменения будут опубликованы на этой странице.</p>
+                </>
+              ) : (
+                <>
+                  <p className="text-gray-400 text-sm">Effective Date: October 20, 2024</p>
+                  
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">1. Information Collection</h3>
+                  <p>ONEBarbershop collects the following information:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Name and phone number when booking services</li>
+                    <li>Information about visits and service preferences</li>
+                    <li>Interaction data through WhatsApp, Telegram, Instagram</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">2. Use of Information</h3>
+                  <p>We use the collected information to:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Confirm and manage appointments</li>
+                    <li>Improve service quality</li>
+                    <li>Send appointment reminders</li>
+                    <li>Inform about promotions and new services</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">3. Data Protection</h3>
+                  <p>ONEBarbershop takes measures to protect your personal data. We do not share your information with third parties without your consent, except as required by law.</p>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">4. Cookies</h3>
+                  <p>Our website uses cookies to improve user experience. You can disable cookies in your browser settings.</p>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">5. Your Rights</h3>
+                  <p>You have the right to:</p>
+                  <ul className="list-disc list-inside space-y-2 ml-4">
+                    <li>Request access to your personal data</li>
+                    <li>Request correction of inaccurate data</li>
+                    <li>Request deletion of your data</li>
+                    <li>Withdraw consent for data processing</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">6. Contact</h3>
+                  <p>For privacy questions, contact us:</p>
+                  <ul className="list-none space-y-2 ml-4">
+                    <li>📍 Address: 9a Admiral Fokina St, Vladivostok</li>
+                    <li>📞 Phone: +7 (984) 156-37-71</li>
+                    <li>💬 WhatsApp: +7 (984) 156-37-71</li>
+                  </ul>
+
+                  <h3 className="text-xl font-bold text-white mt-6 mb-3">7. Policy Changes</h3>
+                  <p>We may update this privacy policy. All changes will be published on this page.</p>
+                </>
+              )}
             </div>
           </div>
         </div>
