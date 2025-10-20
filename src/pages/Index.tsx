@@ -370,55 +370,6 @@ export default function Index() {
           <div className="max-w-4xl mx-auto space-y-6 md:space-y-8">
               <Card className="bg-zinc-900/50 border-primary/20 fade-in-section">
                 <CardContent className="p-6 md:p-8">
-                  <h3 className="text-xl md:text-2xl font-bold mb-6 text-center">
-                    {language === 'ru' ? 'Записаться онлайн' : 'Book Online'}
-                  </h3>
-                  <form className="space-y-4" onSubmit={(e) => {
-                    e.preventDefault();
-                    const message = `Новая заявка с сайта ONEBarbershop:%0A%0AИмя: ${form.name}%0AТелефон: ${form.phone}`;
-                    window.open(`https://wa.me/79841563771?text=${message}`, '_blank');
-                    setForm({ name: '', phone: '' });
-                  }}>
-                    <div>
-                      <Label htmlFor="name" className="text-gray-300 mb-2 block">
-                        {language === 'ru' ? 'Ваше имя' : 'Your Name'}
-                      </Label>
-                      <Input
-                        id="name"
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
-                        className="bg-black border-primary/30 text-white"
-                        placeholder={language === 'ru' ? 'Введите имя' : 'Enter your name'}
-                        required
-                      />
-                    </div>
-                    <div>
-                      <Label htmlFor="phone" className="text-gray-300 mb-2 block">
-                        {language === 'ru' ? 'Телефон' : 'Phone'}
-                      </Label>
-                      <Input
-                        id="phone"
-                        type="tel"
-                        value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })}
-                        className="bg-black border-primary/30 text-white"
-                        placeholder="+7 (___) ___-__-__"
-                        required
-                      />
-                    </div>
-                    <Button 
-                      type="submit"
-                      className="w-full bg-primary hover:bg-primary/80 text-black font-bold py-6 text-lg"
-                    >
-                      <Icon name="MessageCircle" size={20} className="mr-2" />
-                      {language === 'ru' ? 'Отправить в WhatsApp' : 'Send to WhatsApp'}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-
-              <Card className="bg-zinc-900/50 border-primary/20 fade-in-section">
-                <CardContent className="p-6 md:p-8">
                   <div className="flex items-start gap-3 md:gap-4 mb-4 md:mb-6">
                     <Icon name="MapPin" size={24} className="text-primary flex-shrink-0 md:w-8 md:h-8" />
                     <div>
@@ -495,11 +446,21 @@ export default function Index() {
 
       <button
         onClick={toggleMusic}
-        className="fixed bottom-6 right-6 z-50 bg-primary hover:bg-primary/80 text-black p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        className="fixed bottom-24 right-6 z-50 bg-primary hover:bg-primary/80 text-black p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
         aria-label={isPlaying ? 'Pause music' : 'Play music'}
       >
         <Icon name={isPlaying ? 'Pause' : 'Music'} size={24} />
       </button>
+
+      <a
+        href="https://wa.me/79841563771?text=Здравствуйте!%20Хочу%20записаться%20в%20барбершоп"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-6 right-6 z-50 bg-green-500 hover:bg-green-600 text-white p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110 animate-pulse"
+        aria-label="WhatsApp"
+      >
+        <Icon name="MessageCircle" size={28} />
+      </a>
 
       <footer className="py-6 md:py-8 px-4 bg-black border-t border-primary/20">
         <div className="max-w-7xl mx-auto text-center">
