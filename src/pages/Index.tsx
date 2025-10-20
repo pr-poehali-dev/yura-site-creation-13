@@ -36,6 +36,8 @@ export default function Index() {
   const [touchEnd, setTouchEnd] = useState(0);
   const [language, setLanguage] = useState<'ru' | 'en'>('ru');
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
   const [currentHeroImage, setCurrentHeroImage] = useState(0);
   const [galleryTouchStart, setGalleryTouchStart] = useState(0);
   const [galleryTouchEnd, setGalleryTouchEnd] = useState(0);
@@ -55,6 +57,17 @@ export default function Index() {
     'https://cdn.poehali.dev/files/0463d79c-4f72-4f73-9f8d-96732a9452f1.jpg',
     'https://cdn.poehali.dev/files/64068634-143a-4295-8ebe-48bf55d19e3f.jpg'
   ];
+
+  const toggleMusic = () => {
+    if (audioRef.current) {
+      if (isPlaying) {
+        audioRef.current.pause();
+      } else {
+        audioRef.current.play();
+      }
+      setIsPlaying(!isPlaying);
+    }
+  };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.targetTouches[0].clientX);
@@ -426,6 +439,18 @@ export default function Index() {
           </div>
         </div>
       </section>
+
+      <audio ref={audioRef} loop>
+        <source src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" type="audio/mpeg" />
+      </audio>
+
+      <button
+        onClick={toggleMusic}
+        className="fixed bottom-6 right-6 z-50 bg-primary hover:bg-primary/80 text-black p-4 rounded-full shadow-lg transition-all duration-300 hover:scale-110"
+        aria-label={isPlaying ? 'Pause music' : 'Play music'}
+      >
+        <Icon name={isPlaying ? 'Pause' : 'Music'} size={24} />
+      </button>
 
       <footer className="py-6 md:py-8 px-4 bg-black border-t border-primary/20">
         <div className="max-w-7xl mx-auto text-center">
