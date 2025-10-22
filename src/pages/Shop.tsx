@@ -36,8 +36,8 @@ export const Shop = () => {
   return (
     <div className="container py-8 px-4">
       <div className="mb-8">
-        <h1 className="text-4xl font-bold mb-2">Каталог товаров</h1>
-        <p className="text-muted-foreground">Найдите идеальный гаджет для себя</p>
+        <h1 className="text-4xl font-bold mb-2">Магазин средств для ухода</h1>
+        <p className="text-muted-foreground">Профессиональная косметика для волос и бороды</p>
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">

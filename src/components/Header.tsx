@@ -22,9 +22,21 @@ export const Header = () => {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between px-4">
         <Link to="/" className="flex items-center gap-2 text-xl font-bold">
-          <Icon name="Store" size={28} className="text-primary" />
-          <span className="hidden sm:inline">TechStore</span>
+          <Icon name="Scissors" size={28} className="text-primary" />
+          <span className="hidden sm:inline">BARBERSHOP</span>
         </Link>
+
+        <nav className="hidden md:flex items-center gap-6">
+          <Link to="/" className="text-sm font-medium hover:text-primary transition-colors">
+            Главная
+          </Link>
+          <Link to="/booking" className="text-sm font-medium hover:text-primary transition-colors">
+            Записаться
+          </Link>
+          <Link to="/shop" className="text-sm font-medium hover:text-primary transition-colors">
+            Магазин
+          </Link>
+        </nav>
 
         <div className="flex items-center gap-2">
           <Button asChild variant="ghost" className="relative">

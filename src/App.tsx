@@ -7,6 +7,9 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AuthProvider } from "@/contexts/AuthContext";
 import { CartProvider } from "@/contexts/CartContext";
 import { Header } from "@/components/Header";
+import { Home } from "@/pages/Home";
+import { Booking } from "@/pages/Booking";
+import { BookingSuccess } from "@/pages/BookingSuccess";
 import { Shop } from "@/pages/Shop";
 import { Cart } from "@/pages/Cart";
 import { Checkout } from "@/pages/Checkout";
@@ -29,7 +32,10 @@ const App = () => (
           <BrowserRouter>
             <Header />
             <Routes>
-              <Route path="/" element={<Shop />} />
+              <Route path="/" element={<Home />} />
+              <Route path="/booking" element={<Booking />} />
+              <Route path="/booking-success" element={<BookingSuccess />} />
+              <Route path="/shop" element={<Shop />} />
               <Route path="/cart" element={<Cart />} />
               <Route path="/checkout" element={<Checkout />} />
               <Route path="/login" element={<Login />} />
