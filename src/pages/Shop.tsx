@@ -123,12 +123,36 @@ const CATEGORIES = [
   { id: 'accessories', label: 'Аксессуары' },
 ];
 
+const SORT_OPTIONS = [
+  { id: 'default', label: 'По умолчанию' },
+  { id: 'price-asc', label: 'Цена: по возрастанию' },
+  { id: 'price-desc', label: 'Цена: по убыванию' },
+  { id: 'name-asc', label: 'Название: А-Я' },
+  { id: 'name-desc', label: 'Название: Я-А' },
+];
+
 export const Shop = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
+  const [sortBy, setSortBy] = useState<string>('default');
 
   const filteredProducts = selectedCategory === 'all'
     ? PRODUCTS
     : PRODUCTS.filter(p => p.category === selectedCategory);
+
+  const sortedProducts = [...filteredProducts].sort((a, b) => {
+    switch (sortBy) {
+      case 'price-asc':
+        return a.price - b.price;
+      case 'price-desc':
+        return b.price - a.price;
+      case 'name-asc':
+        return a.name.localeCompare(b.name, 'ru');
+      case 'name-desc':
+        return b.name.localeCompare(a.name, 'ru');
+      default:
+        return 0;
+    }
+  });
 
   useEffect(() => {
     analytics.trackPageView('/shop');
@@ -144,25 +168,43 @@ export const Shop = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap gap-2 justify-center mb-8">
-          {CATEGORIES.map((category) => (
-            <Button
-              key={category.id}
-              variant={selectedCategory === category.id ? 'default' : 'outline'}
-              onClick={() => setSelectedCategory(category.id)}
-            >
-              {category.label}
-            </Button>
-          ))}
+        <div className="mb-8 space-y-4">
+          <div className="flex flex-wrap gap-2 justify-center">
+            {CATEGORIES.map((category) => (
+              <Button
+                key={category.id}
+                variant={selectedCategory === category.id ? 'default' : 'outline'}
+                onClick={() => setSelectedCategory(category.id)}
+              >
+                {category.label}
+              </Button>
+            ))}
+          </div>
+          
+          <div className="flex items-center justify-center gap-2">
+            <span className="text-sm text-muted-foreground">Сортировка:</span>
+            <div className="flex flex-wrap gap-2">
+              {SORT_OPTIONS.map((option) => (
+                <Button
+                  key={option.id}
+                  variant={sortBy === option.id ? 'default' : 'outline'}
+                  size="sm"
+                  onClick={() => setSortBy(option.id)}
+                >
+                  {option.label}
+                </Button>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-          {filteredProducts.map((product) => (
+          {sortedProducts.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>
 
-        {filteredProducts.length === 0 && (
+        {sortedProducts.length === 0 && (
           <div className="text-center py-12">
             <p className="text-muted-foreground text-lg">
               В этой категории пока нет товаров
