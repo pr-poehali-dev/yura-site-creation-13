@@ -1,9 +1,12 @@
 import { useState, useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useCart } from '@/contexts/CartContext';
 
 const services = [
   { title: 'Мужская стрижка', titleEn: 'Men\'s Haircut', price: '2000', icon: 'Scissors' },
@@ -27,6 +30,7 @@ const portfolio = [
 ];
 
 export default function Index() {
+  const { totalItems } = useCart();
   const [form, setForm] = useState({ name: '', phone: '' });
   const [showServicesModal, setShowServicesModal] = useState(false);
   const [showReviewsModal, setShowReviewsModal] = useState(false);
@@ -155,6 +159,7 @@ export default function Index() {
           <div className="hidden md:flex gap-8">
             <button onClick={() => setShowServicesModal(true)} className="hover:text-primary transition-colors">{language === 'ru' ? 'Услуги' : 'Services'}</button>
             <a href="#portfolio" className="hover:text-primary transition-colors">{language === 'ru' ? 'Работы' : 'Portfolio'}</a>
+            <Link to="/shop" className="hover:text-primary transition-colors">{language === 'ru' ? 'Магазин' : 'Shop'}</Link>
             <button onClick={() => setShowReviewsModal(true)} className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</button>
             <a href="#contacts" className="hover:text-primary transition-colors">{language === 'ru' ? 'Контакты' : 'Contacts'}</a>
           </div>
@@ -165,6 +170,17 @@ export default function Index() {
             >
               {language === 'ru' ? 'EN' : 'RU'}
             </button>
+            <Link to="/cart" className="relative text-white hover:text-primary transition-colors">
+              <Icon name="ShoppingCart" size={20} />
+              {totalItems > 0 && (
+                <Badge 
+                  variant="destructive" 
+                  className="absolute -top-2 -right-2 h-5 w-5 flex items-center justify-center p-0 text-xs"
+                >
+                  {totalItems}
+                </Badge>
+              )}
+            </Link>
             <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
               <span className="hidden sm:inline">+7 (984) 156-37-71</span>
               <Icon name="Phone" size={20} className="sm:hidden" />
@@ -203,6 +219,13 @@ export default function Index() {
             >
               {language === 'ru' ? 'Работы' : 'Portfolio'}
             </a>
+            <Link 
+              to="/shop" 
+              className="hover:text-primary transition-colors py-2"
+              onClick={() => setShowMobileMenu(false)}
+            >
+              {language === 'ru' ? 'Магазин' : 'Shop'}
+            </Link>
             <button 
               onClick={() => {
                 setShowReviewsModal(true);
