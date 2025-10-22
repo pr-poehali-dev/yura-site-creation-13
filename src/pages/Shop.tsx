@@ -6,10 +6,10 @@ import { Button } from '@/components/ui/button';
 const PRODUCTS: Product[] = [
   {
     id: '1',
-    name: 'Помада для укладки волос',
-    description: 'Сильная фиксация с матовым эффектом. Идеально для создания текстурных причесок.',
+    name: 'Boys Toys 101 карат, 40 мл',
+    description: 'Помада с сильной фиксацией для создания текстурных причёсок. Матовый финиш.',
     price: 1200,
-    image: 'https://images.unsplash.com/photo-1621607512214-68297480165e?w=500&h=500&fit=crop',
+    image: 'https://cdn.poehali.dev/files/7b998d7a-bb75-4b82-b517-e82c39761e25.png',
     category: 'styling',
     inStock: true,
   },
