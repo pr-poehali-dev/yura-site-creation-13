@@ -7,7 +7,7 @@ const PRODUCTS: Product[] = [
   {
     id: '1',
     name: 'Boys Toys 101 карат, 40 мл',
-    description: 'Помада с сильной фиксацией для создания текстурных причёсок. Матовый финиш.',
+    description: 'Паста для укладки волос высокой фиксации с низким уровнем блеска',
     price: 1200,
     image: 'https://cdn.poehali.dev/files/7b998d7a-bb75-4b82-b517-e82c39761e25.png',
     category: 'styling',
