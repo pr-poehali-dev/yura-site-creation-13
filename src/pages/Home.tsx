@@ -50,20 +50,12 @@ export const Home = () => {
           <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-2xl mx-auto">
             Искусство мужского стиля и традиции классического бритья
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button asChild size="lg" className="text-lg">
-              <Link to="/booking">
-                <Icon name="Calendar" size={20} className="mr-2" />
-                Записаться на стрижку
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline" className="text-lg">
-              <Link to="/shop">
-                <Icon name="ShoppingBag" size={20} className="mr-2" />
-                Магазин средств
-              </Link>
-            </Button>
-          </div>
+          <Button asChild size="lg" className="text-lg">
+            <Link to="/booking">
+              <Icon name="Calendar" size={20} className="mr-2" />
+              Записаться на стрижку
+            </Link>
+          </Button>
         </div>
       </section>
 
@@ -145,55 +137,6 @@ export const Home = () => {
                 Уютный интерьер, кофе и приятная беседа
               </p>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="container py-20 px-4">
-        <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div>
-            <h2 className="text-4xl font-bold mb-6">Магазин средств для ухода</h2>
-            <p className="text-lg text-muted-foreground mb-6">
-              Приобретайте профессиональные средства для ухода за волосами и бородой,
-              которые используют наши мастера. Качественная продукция для поддержания
-              вашего стиля в домашних условиях.
-            </p>
-            <ul className="space-y-3 mb-8">
-              <li className="flex items-center gap-2">
-                <Icon name="Check" size={20} className="text-primary" />
-                <span>Масла и воски для бороды</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Icon name="Check" size={20} className="text-primary" />
-                <span>Помады и гели для укладки</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Icon name="Check" size={20} className="text-primary" />
-                <span>Средства для бритья</span>
-              </li>
-              <li className="flex items-center gap-2">
-                <Icon name="Check" size={20} className="text-primary" />
-                <span>Натуральные шампуни и кондиционеры</span>
-              </li>
-            </ul>
-            <Button asChild size="lg">
-              <Link to="/shop">
-                <Icon name="ShoppingBag" size={20} className="mr-2" />
-                Перейти в магазин
-              </Link>
-            </Button>
-          </div>
-          <div className="grid grid-cols-2 gap-4">
-            <img 
-              src="https://cdn.poehali.dev/projects/fea708e8-7919-4482-b71b-b76894470feb/files/e076e098-b3ed-4eac-85bb-3d97e44c33ac.jpg"
-              alt="Средства для ухода"
-              className="rounded-lg shadow-xl"
-            />
-            <img 
-              src="https://cdn.poehali.dev/projects/fea708e8-7919-4482-b71b-b76894470feb/files/a4b7d7af-b839-4041-a074-a8096610e050.jpg"
-              alt="Помады для укладки"
-              className="rounded-lg shadow-xl mt-8"
-            />
           </div>
         </div>
       </section>
