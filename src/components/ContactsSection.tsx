@@ -4,6 +4,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import Icon from '@/components/ui/icon';
+import { analytics } from '@/lib/analytics';
 
 interface ContactsSectionProps {
   language: 'ru' | 'en';
@@ -18,6 +19,8 @@ export const ContactsSection = ({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    analytics.trackFormSubmit('contact_form');
+    analytics.trackBooking('contact_form');
     const message = `Новая запись:%0AИмя: ${form.name}%0AТелефон: ${form.phone}`;
     window.open(`https://wa.me/79841563771?text=${message}`, '_blank');
   };

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
 import { useCart } from '@/contexts/CartContext';
+import { analytics } from '@/lib/analytics';
 
 interface NavigationProps {
   language: 'ru' | 'en';
@@ -38,11 +39,11 @@ export const Navigation = ({
             <span className="text-lg md:text-2xl font-bold">Barbershop</span>
           </div>
           <div className="hidden md:flex gap-8">
-            <button onClick={onServicesClick} className="hover:text-primary transition-colors">{language === 'ru' ? 'Услуги' : 'Services'}</button>
-            <a href="#portfolio" className="hover:text-primary transition-colors">{language === 'ru' ? 'Работы' : 'Portfolio'}</a>
-            <Link to="/shop" className="hover:text-primary transition-colors">{language === 'ru' ? 'Магазин' : 'Shop'}</Link>
-            <button onClick={onReviewsClick} className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</button>
-            <a href="#contacts" className="hover:text-primary transition-colors">{language === 'ru' ? 'Контакты' : 'Contacts'}</a>
+            <button onClick={() => { analytics.trackClick('services_menu'); onServicesClick(); }} className="hover:text-primary transition-colors">{language === 'ru' ? 'Услуги' : 'Services'}</button>
+            <a href="#portfolio" onClick={() => analytics.trackClick('portfolio_menu')} className="hover:text-primary transition-colors">{language === 'ru' ? 'Работы' : 'Portfolio'}</a>
+            <Link to="/shop" onClick={() => analytics.trackClick('shop_menu')} className="hover:text-primary transition-colors">{language === 'ru' ? 'Магазин' : 'Shop'}</Link>
+            <button onClick={() => { analytics.trackClick('reviews_menu'); onReviewsClick(); }} className="hover:text-primary transition-colors">{language === 'ru' ? 'Отзывы' : 'Reviews'}</button>
+            <a href="#contacts" onClick={() => analytics.trackClick('contacts_menu')} className="hover:text-primary transition-colors">{language === 'ru' ? 'Контакты' : 'Contacts'}</a>
           </div>
           <div className="flex items-center gap-3">
             <button
@@ -62,7 +63,7 @@ export const Navigation = ({
                 </Badge>
               )}
             </Link>
-            <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
+            <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" onClick={() => analytics.trackPhoneClick()} className="text-primary font-medium flex items-center gap-2 text-sm md:text-base">
               <span className="hidden sm:inline">+7 (984) 156-37-71</span>
               <Icon name="Phone" size={20} className="sm:hidden" />
             </a>

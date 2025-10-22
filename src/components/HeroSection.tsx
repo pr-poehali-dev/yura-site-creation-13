@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { Button } from '@/components/ui/button';
 import Icon from '@/components/ui/icon';
+import { analytics } from '@/lib/analytics';
 
 interface HeroSectionProps {
   language: 'ru' | 'en';
@@ -49,12 +50,12 @@ export const HeroSection = ({
             : 'Men\'s style and traditions in the heart of the city'}
         </p>
         <div className="flex gap-4 justify-center animate-fade-in-delay-2">
-          <a href="https://n1206241.yclients.com" target="_blank" rel="noopener noreferrer">
+          <a href="https://n1206241.yclients.com" target="_blank" rel="noopener noreferrer" onClick={() => analytics.trackBooking('online_button')}>
             <Button size="lg" className="bg-primary hover:bg-primary/90 text-white font-semibold">
               {language === 'ru' ? 'Записаться онлайн' : 'Book Online'}
             </Button>
           </a>
-          <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer">
+          <a href="https://wa.me/79841563771" target="_blank" rel="noopener noreferrer" onClick={() => analytics.trackWhatsAppClick()}>
             <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">
               WhatsApp
             </Button>

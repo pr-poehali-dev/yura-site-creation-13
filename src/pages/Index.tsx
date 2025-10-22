@@ -6,6 +6,7 @@ import { ServicesModal } from '@/components/ServicesModal';
 import { PortfolioSection } from '@/components/PortfolioSection';
 import { ReviewsModal } from '@/components/ReviewsModal';
 import { ContactsSection } from '@/components/ContactsSection';
+import { analytics } from '@/lib/analytics';
 
 const services = [
   { title: 'Мужская стрижка', titleEn: 'Men\'s Haircut', price: '2000', icon: 'Scissors' },
@@ -157,6 +158,10 @@ export default function Index() {
 
     return () => clearInterval(interval);
   }, [heroImages.length]);
+
+  useEffect(() => {
+    analytics.trackPageView('/');
+  }, []);
 
   return (
     <div className="min-h-screen bg-black text-white relative">

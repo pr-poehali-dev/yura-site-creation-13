@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import { Product, CartItem } from '@/types/shop';
 import { useToast } from '@/hooks/use-toast';
+import { analytics } from '@/lib/analytics';
 
 interface CartContextType {
   items: CartItem[];
@@ -26,6 +27,7 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   }, [items]);
 
   const addToCart = (product: Product) => {
+    analytics.trackAddToCart(product.id, product.name, product.price);
     setItems((current) => {
       const existing = current.find((item) => item.product.id === product.id);
       if (existing) {
@@ -48,6 +50,10 @@ export const CartProvider: React.FC<{ children: React.ReactNode }> = ({ children
   };
 
   const removeFromCart = (productId: string) => {
+    const item = items.find((i) => i.product.id === productId);
+    if (item) {
+      analytics.trackRemoveFromCart(item.product.id, item.product.name);
+    }
     setItems((current) => current.filter((item) => item.product.id !== productId));
     toast({
       title: "Удалено из корзины",

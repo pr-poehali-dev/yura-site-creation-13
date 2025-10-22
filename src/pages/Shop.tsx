@@ -1,7 +1,8 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Product } from '@/types/shop';
 import { ProductCard } from '@/components/ProductCard';
 import { Button } from '@/components/ui/button';
+import { analytics } from '@/lib/analytics';
 
 const PRODUCTS: Product[] = [
   {
@@ -92,6 +93,10 @@ export const Shop = () => {
   const filteredProducts = selectedCategory === 'all'
     ? PRODUCTS
     : PRODUCTS.filter(p => p.category === selectedCategory);
+
+  useEffect(() => {
+    analytics.trackPageView('/shop');
+  }, []);
 
   return (
     <div className="min-h-screen bg-background pt-20">

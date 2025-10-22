@@ -1,11 +1,20 @@
+import { useEffect } from 'react';
 import { useCart } from '@/contexts/CartContext';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
 import { Link } from 'react-router-dom';
 import Icon from '@/components/ui/icon';
+import { analytics } from '@/lib/analytics';
 
 export const Cart = () => {
   const { items, removeFromCart, updateQuantity, totalPrice, clearCart } = useCart();
+
+  useEffect(() => {
+    analytics.trackPageView('/cart');
+    if (items.length > 0) {
+      analytics.trackPurchaseIntent();
+    }
+  }, [items.length]);
 
   if (items.length === 0) {
     return (
