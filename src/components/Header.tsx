@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/contexts/AuthContext';
-import { useCart } from '@/contexts/CartContext';
 import Icon from '@/components/ui/icon';
 import {
   DropdownMenu,
@@ -10,11 +9,9 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Badge } from '@/components/ui/badge';
 
 export const Header = () => {
   const { isAuthenticated, user, logout } = useAuth();
-  const { totalItems } = useCart();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
@@ -31,25 +28,9 @@ export const Header = () => {
           <Link to="/booking" className="text-sm font-medium hover:text-primary transition-colors">
             Записаться
           </Link>
-          <Link to="/shop" className="text-sm font-medium hover:text-primary transition-colors">
-            Магазин
-          </Link>
         </nav>
 
         <div className="flex items-center gap-2">
-          <Button variant="ghost" size="icon" asChild className="relative">
-            <Link to="/cart">
-              <Icon name="ShoppingCart" size={20} />
-              {totalItems > 0 && (
-                <Badge 
-                  variant="destructive" 
-                  className="absolute -top-1 -right-1 h-5 w-5 flex items-center justify-center p-0 text-xs"
-                >
-                  {totalItems}
-                </Badge>
-              )}
-            </Link>
-          </Button>
           {isAuthenticated ? (
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
