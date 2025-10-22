@@ -7,10 +7,10 @@ import { analytics } from '@/lib/analytics';
 const PRODUCTS: Product[] = [
   {
     id: '1',
-    name: 'Boys Toys 101 карат, 40 мл',
-    description: 'Паста для укладки волос высокой фиксации с низким уровнем блеска',
+    name: 'Boys Toys Rock & Roll Pomade',
+    description: 'Помада для волос сильной фиксации',
     price: 1200,
-    image: 'https://cdn.poehali.dev/files/7b998d7a-bb75-4b82-b517-e82c39761e25.png',
+    image: 'https://cdn.poehali.dev/files/8175ddb9-ac0e-4a9c-96b4-175e476923e5.png',
     category: 'styling',
     inStock: true,
   },
