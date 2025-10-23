@@ -132,21 +132,31 @@ export const ContactsSection = ({
               />
             </div>
             <div className="p-4 bg-black/70">
-              <div className="flex items-center justify-between">
+              <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
                   <p className="font-semibold text-primary">Onebarbershop</p>
                   <p className="text-sm text-gray-300">
                     {language === 'ru' ? 'г.Владивосток, адм.Фокина 9а' : 'Vladivostok, Fokina st., 9a'}
                   </p>
                 </div>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  onClick={() => window.open('https://yandex.ru/maps/?text=Владивосток, Фокина 9а', '_blank')}
-                >
-                  <Icon name="Navigation" size={16} className="mr-2" />
-                  {language === 'ru' ? 'Построить маршрут' : 'Get Directions'}
-                </Button>
+                <div className="flex gap-2 flex-wrap">
+                  <Button
+                    variant="outline"
+                    size="sm"
+                    onClick={() => window.open('https://yandex.ru/maps/?text=Владивосток, Фокина 9а', '_blank')}
+                  >
+                    <Icon name="Navigation" size={16} className="mr-2" />
+                    {language === 'ru' ? 'Маршрут' : 'Directions'}
+                  </Button>
+                  <Button
+                    variant="default"
+                    size="sm"
+                    onClick={() => window.open('https://3.redirect.appmetrica.yandex.com/route?end-lat=43.115536&end-lon=131.886116&level=50&ref=yoursites', '_blank')}
+                  >
+                    <Icon name="Car" size={16} className="mr-2" />
+                    {language === 'ru' ? 'Вызвать такси' : 'Call Taxi'}
+                  </Button>
+                </div>
               </div>
             </div>
           </CardContent>
