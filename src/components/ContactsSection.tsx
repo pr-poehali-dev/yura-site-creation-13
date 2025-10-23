@@ -117,6 +117,40 @@ export const ContactsSection = ({
             </Card>
           </div>
         </div>
+
+        <Card className="mt-8 bg-black/50 border-primary/20 overflow-hidden">
+          <CardContent className="p-0">
+            <div className="relative w-full h-[400px]">
+              <iframe
+                src="https://yandex.ru/map-widget/v1/?ll=131.886116,43.115536&z=17&l=map&pt=131.886116,43.115536,pm2rdm"
+                width="100%"
+                height="400"
+                frameBorder="0"
+                allowFullScreen
+                style={{ position: 'relative' }}
+                title={language === 'ru' ? 'Карта расположения Onebarbershop' : 'Onebarbershop location map'}
+              />
+            </div>
+            <div className="p-4 bg-black/70">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="font-semibold text-primary">Onebarbershop</p>
+                  <p className="text-sm text-gray-300">
+                    {language === 'ru' ? 'г.Владивосток, адм.Фокина 9а' : 'Vladivostok, Fokina st., 9a'}
+                  </p>
+                </div>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  onClick={() => window.open('https://yandex.ru/maps/?text=Владивосток, Фокина 9а', '_blank')}
+                >
+                  <Icon name="Navigation" size={16} className="mr-2" />
+                  {language === 'ru' ? 'Построить маршрут' : 'Get Directions'}
+                </Button>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
       </div>
     </section>
   );
