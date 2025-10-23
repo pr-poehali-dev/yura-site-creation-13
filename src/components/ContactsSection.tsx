@@ -83,7 +83,7 @@ export const ContactsSection = ({
                   <div>
                     <p className="font-semibold">{language === 'ru' ? 'Адрес' : 'Address'}</p>
                     <p className="text-gray-300">
-                      {language === 'ru' ? 'г. Якутск, ул. Губина, 6' : 'Yakutsk, Gubina st., 6'}
+                      {language === 'ru' ? 'г.Владивосток, адм.Фокина 9а' : 'Vladivostok, Fokina st., 9a'}
                     </p>
                   </div>
                 </div>
