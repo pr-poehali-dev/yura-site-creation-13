@@ -109,7 +109,7 @@ export const ContactsSection = ({
                   <div>
                     <p className="font-semibold">{language === 'ru' ? 'Режим работы' : 'Working Hours'}</p>
                     <p className="text-gray-300">
-                      {language === 'ru' ? 'Ежедневно 10:00 - 21:00' : 'Daily 10:00 - 21:00'}
+                      {language === 'ru' ? 'Ежедневно 10:00 - 22:00' : 'Daily 10:00 - 22:00'}
                     </p>
                   </div>
                 </div>
